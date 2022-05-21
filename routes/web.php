@@ -25,7 +25,6 @@ Route::get('/signup', function () {
     return view('user.signup');
 });
 
-Route::post('/signup', [App\Http\Controllers\UserController::class, 'signup']);
 
 Route::get('/signin', function () {
     return view('user.signin');
@@ -36,6 +35,11 @@ Route::post('/signin', [App\Http\Controllers\UserController::class, 'signin']);
 Route::get('/privacypolicy', [App\Http\Controllers\UserController::class, 'privacypolicy']);
 
 Auth::routes();
+
+
+
+Route::post('/userregistration', [App\Http\Controllers\UserController::class, 'signupuser']);
+
 Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin',ClearFormSession::class]], function(){
 	Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('home')->middleware('admin');
 	Route::post('/state', [App\Http\Controllers\AdminController::class, 'state'])->middleware('admin');

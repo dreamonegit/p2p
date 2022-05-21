@@ -24,7 +24,7 @@
 <h5 class="admin_head">Create a free account</h5>
 
 <div class="adminlogin_form">
-<form action="" method="post" name="l1" id="l1" autocomplete="off" enctype="multipart/form-data">@csrf
+<form action="{{ url('userregistration') }}" method="post" name="l1" id="l1" autocomplete="off" enctype="multipart/form-data">@csrf
 
 <div class="admin_box">
 
@@ -140,9 +140,9 @@ top: -3px;">
 
 
 <div class="clearfix"></div>
-<div class="google_capca">
+<!-- <div class="google_capca">
 <img src="{{ asset('user/images/google-cap.jpg') }}" />
-</div>
+</div> -->
 
 <div class="admin_box" style="margin-bottom:0px;">
 

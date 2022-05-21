@@ -25,9 +25,7 @@
 <h5 class="admin_head">Use your "Bit2atm" Account</h5>
 
 <div class="adminlogin_form">
-<form action="" method="post" name="l1" id="l1" autocomplete="off" enctype="multipart/form-data">@csrf
-
-
+<form action="{{ url('signin') }}" method="post" name="l1" id="l1" autocomplete="off" enctype="multipart/form-data">@csrf
 
 
 
@@ -73,11 +71,11 @@
 
 </script> 
 
-
+<!-- 
 <div class="google_capca">
 <img src="{{ asset('user/images/google-cap.jpg') }}" />
 </div>
-
+ -->
 
 <div class="admin_box" style="margin-bottom:0px;">
 

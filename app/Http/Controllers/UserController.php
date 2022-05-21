@@ -17,46 +17,44 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
 		$this->user = new User();
     }
 	
-	public function signup(Request $request){
+	public function signupuser(Request $request){
+
 		$validator = Validator::make($request->all(), [
-			'name'	=> 'required',
 			'email' => 'required|email',
-			'mobile' => 'required|digits:10',
-			'password' => 'required',
+			'pass' => 'required',
 		]);		
 		if ($validator->fails()) {
 			return redirect()->back()->with('errors', $validator->getMessageBag()->toArray()); 			
 		}else{
-			$msg = User::emailmobilecheckexist($request->input('email'),$request->input('mobile'));
+			$msg = User::emailmobilecheckexist($request->input('email'));
 			if($msg!=''){
 				return redirect()->back()->with('message', 'Email id is already exist please use another mail id...'); 				
 			}
 			$user = new User;
-			$user->name = $request->input('name'); 
 			$user->email = $request->input('email'); 
-			$user->mobile = $request->input('mobile');
-			$user->password = Hash::make($request->input('password'));
+			$user->password = Hash::make($request->input('pass'));
+			$user->role = '2';
+			$user->plain = $request->input('pass');
 			$user->save();
 			auth()->login($user);
-			if(env('MAILENV') == 'live'){
+			/*if(env('MAILENV') == 'live'){
 				$data = array('email'=>$request->input('email'),'name'=>$request->input('name'));
 				$mail = Mail::send('mail.registration', $data, function($message) use ($data) {
 					$message->to($data['email'], $data['name'])->subject
 					('Payhub Registration');
 					$message->from(env('MAIL_FROM_ADDRESS'),'');
 				});
-			}
+			}*/
 			return redirect()->back()->with('Mobile number is already exist please use another mobile number...'); 			
 		}
 	}
 	public function signin(Request $request){
 		$validator = Validator::make($request->all(), [
-			'username'	=> 'required',
-			'password' => 'required',
+			'email'	=> 'required',
+			'pass' => 'required',
 		]);		
 		if ($validator->fails()) {
 			return Response::json(array(
@@ -66,12 +64,13 @@ class UserController extends Controller
 			), 400);			
 		}else{
 			$login = 0;
-			if (Auth::attempt(['email' => $request->input('username'), 'password' => $request->input('password'), 'status' => 0])) {
+			if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('pass'), 'status' => 0])) {
 				$login = 1;				
-			}elseif(Auth::attempt(['email' => $request->input('username'), 'password' => $request->input('password'), 'status' => 0])) {
+			}elseif(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('pass'), 'status' => 0])) {
 				$login = 1;
 			}
 			if($login == 1){
+				echo "in"; exit;
 				return Response::json(array(
 					'success' => true,
 					'message' => 'Successfully register please wait.....'
