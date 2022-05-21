@@ -14,7 +14,7 @@ use App\Http\Middleware\ClearFormSession;
 |
 */
 
-Route::get('/', function () {
+Route::get('/adminlogin', function () {
     return view('auth.login');
 });
 
@@ -27,4 +27,9 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin',ClearFormSes
 	Route::get('/listcoin', [App\Http\Controllers\CoinController::class, 'index'])->middleware('admin');
 	Route::get('/edit-coin/{id}', [App\Http\Controllers\CoinController::class, 'savecoin'])->middleware('admin');
 	Route::any('/add-coin', [App\Http\Controllers\CoinController::class, 'savecoin'])->middleware('admin');
+});
+
+
+Route::get('/', function () {
+    return view('user.login');
 });
