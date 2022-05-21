@@ -73,7 +73,7 @@ $(".refbut").click(function(){
 </script>
 
 
-<div class="css-15651n7" value="">
+<!--<div class="css-15651n7" value="">
 <div class="css-xrxl27">
 
 <div style="float:left; margin-top:10px;"  class="refbut">
@@ -91,7 +91,7 @@ top: -3px;">
 <div class="bn-input-suffix css-vurnku">
 <div class="css-1gkkq18">
 </div></div></div></div>
-<div data-bn-type="text" class="help_default css-10pzx7y"></div></div>
+<div data-bn-type="text" class="help_default css-10pzx7y"></div></div>-->
 
 
 
@@ -108,7 +108,7 @@ top: -3px;">
 
 
 
-<div class="socite1"><input type="checkbox" class="ch_box1" required />I'have read and agreed <a href="{{ url('privacypolicy') }}" target="_blank">Privacy Policy</a> with <a href="terms-conditions.html" target="_blank">Terms and Conditions</a> </div>
+<div class="socite1"><input type="checkbox" class="ch_box1" required />I'have read and agreed <a href="{{ url('privacypolicy') }}" target="_blank">Privacy Policy</a> with <a href="{{ url('termsconditions') }}" target="_blank">Terms and Conditions</a> </div>
 
 
 <script language="javascript">

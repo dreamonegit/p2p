@@ -50,4 +50,13 @@ class User extends Authenticatable
 		
 		return $message;
 	}
+	public static function emailexistornot($email){
+		
+		$count = User::where('email', $email)->count();
+		
+		return $count;
+	}
+	public static function login($data = array()){
+		return User::where('email',$data['email'])->first();
+	}
 }

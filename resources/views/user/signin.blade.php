@@ -88,7 +88,7 @@
 
 <div class="clearfix"></div>
 
-<div class="socite"><a href="#">Forgot Password ?</a></div>
+<div class="socite"><a href="{{ url('forgotpassword') }}">Forgot Password ?</a></div>
 
 <div class="clearfix"></div>
 

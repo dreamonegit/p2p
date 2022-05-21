@@ -34,6 +34,12 @@ Route::post('/signin', [App\Http\Controllers\UserController::class, 'signin']);
 
 Route::get('/privacypolicy', [App\Http\Controllers\UserController::class, 'privacypolicy']);
 
+Route::get('/termsconditions', [App\Http\Controllers\UserController::class, 'termsconditions']);
+
+Route::get('/forgotpassword', [App\Http\Controllers\UserController::class, 'forgotpassword']);
+
+Route::post('/forgotpassword', [App\Http\Controllers\UserController::class, 'forgotpassword']);
+
 Auth::routes();
 
 

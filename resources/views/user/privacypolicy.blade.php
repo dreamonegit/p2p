@@ -1,76 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Welcome to BIT2ATM</title>
-
-
-
-<link href="css/bootstrap.css" type="text/css" rel="stylesheet" />
-<script src="js/jquery-1.11.0.min.js"></script>
-
-
- <!---menu link-->
-
-   <link rel="stylesheet" href="menu/styles.css">
-   <script src="menu/script.js"></script>
- <!---menu link-->
-    
-
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" type="text/css" href="css/responsive.css" />
-
-
-</head>
-
-<body>
-
-
-
-
-<!--header-start--->
-<div class="header-out">
-<div class="container container-1400">
-
-
-<div class="col-md-2">
-<a href="index.html">
-<div class="head-logo">
-<img src="images/logo.png" />
-</div>
-</a>
-</div>
-
-<!--menu-->
-<div class="col-md-8">
-<div class="menu-out">
- <div id='cssmenu'>
-<ul>
-   <li class="first  "><a href='account.html'>User Centre</a></li>
-        <li  class=" "><a href="#">Trade </a></li>
-        <li  class=" "><a href="exchange.html">Exchange </a></li>
-        <li  class=" "><a href="api.html">API </a></li>
-       <li  class=" "><a href="wallet-balance.html">Funds </a></li>
-        <li  class=" "><a href="referrals.html">Referrals</a></li>
-        <li  class=""><a href="support.html">Support </a></li>
-        <li  class="last "><a href="bank-details.html">Bank Details</a></li>
-        
-        
-                                  
-</ul>
-</div>
-</div>
-</div>
-<!--menu-->
-
-
-
-
-
-
 @extends('userlayouts.layouts.header')
 
 @section('content')
@@ -473,13 +400,9 @@ If you have any questions, comments, or concerns not specifically regarding our 
 please contact us at our email address.	
 
 </div>
-
-
-
-
 </div>
 </div>
-<!--body-end--->
+@endsection
 
 
 
@@ -499,59 +422,6 @@ please contact us at our email address.
 
 
 
-
-
-
-
-
-
-
-<div class="col-md-2">
-
-<div class="fot-heading">
-CONTACT US<br />
-</div>
-
-<div class="fot-links allmenu">
-<ul>
-<li class="fot-bullet"><a href="#"><span>Email</span></a></li>
-<li class="fot-bullet"><a href="#"><span>Submit Feedback</span></a></li>
-</ul>
-
-</div>
-
-</div>
-
-
-
-<div class="col-md-3">
-<div class="fot-out21">
-
-<div class="fot-heading">
-SOCIAL MEDIA <br />
-</div>
-
-<div style="background:none;" class="topcont__part1">
-<a class="ft-so-icon" href="#"><img class="hvr-rotate" src="images/Layer 766.png"></a>
-<a class="ft-so-icon"href="#"><img class="hvr-rotate" src="images/Layer 767.png"></a>
-<a class="ft-so-icon"href="#"><img class="hvr-rotate" src="images/Layer 769.png"></a>
-<a class="ft-so-icon"href="#"><img class="hvr-rotate" src="images/Layer 769.png"></a><br />
-
-<a class="ft-so-icon"href="#"><img class="hvr-rotate" src="images/Layer 770.png"></a>
-<a class="ft-so-icon"href="#"><img class="hvr-rotate" src="images/Layer 771.png"></a>
-<a class="ft-so-icon"href="#"><img class="hvr-rotate" src="images/Layer 772.png"></a>
-</div>
-
-
-
-</div>
-</div>
-
-
-
-
-</div>
-</div>
 
 
 
