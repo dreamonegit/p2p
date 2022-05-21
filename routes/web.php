@@ -17,6 +17,23 @@ use App\Http\Middleware\ClearFormSession;
 Route::get('/adminlogin', function () {
     return view('auth.login');
 });
+Route::get('/', function () {
+    return view('user.index');
+});
+
+Route::get('/signup', function () {
+    return view('user.signup');
+});
+
+Route::post('/signup', [App\Http\Controllers\UserController::class, 'signup']);
+
+Route::get('/signin', function () {
+    return view('user.signin');
+});
+
+Route::post('/signin', [App\Http\Controllers\UserController::class, 'signin']);
+
+Route::get('/privacypolicy', [App\Http\Controllers\UserController::class, 'privacypolicy']);
 
 Auth::routes();
 Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin',ClearFormSession::class]], function(){
@@ -30,6 +47,3 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin',ClearFormSes
 });
 
 
-Route::get('/', function () {
-    return view('user.login');
-});

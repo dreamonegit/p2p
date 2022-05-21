@@ -71,7 +71,7 @@
 <div class="soci-out">
 
 <div class="mail_id_img2 hvr-grow-rotate">
-<a href="{{ url('/signin') }}"><div class="acc-ou-2-2">Login</div></a>
+<a href="{{ url('/signin') }}" ><div class="acc-ou-2-2">Login</div></a>
 </div>
 
 <div class="mail_id_img2 hvr-grow-rotate">
