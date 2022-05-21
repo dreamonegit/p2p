@@ -85,7 +85,7 @@ class UserController extends Controller
 	}
 	public function privacypolicy(){
 		
-      return view('admin.privacypolicy');
+      return view('user.privacypolicy');
 
 	}
 
