@@ -37,7 +37,7 @@
 </head>
 <body style="background:#fff;">
 <!--header-start--->
-<div class="header-out" style="margin-top: -30px;">
+<div class="header-out" >
 <div class="container container-1400">
 <div class="col-md-2">
 <a href="index.html">
@@ -52,9 +52,13 @@
 <div class="menu-out">
  <div id='cssmenu'>
 <ul>
-        <li  class="first active"><a href="#">Trade </a></li>
-        <li  class=" "><a href="exchange.html">Exchange </a></li>
-        <li  class=" "><a href="api.html">API </a></li>                            
+        <li class="first  "><a href='account.html'>Dashboard</a></li>
+        <li  class=" "><a href="#">Security</a></li>
+        <li  class=" "><a href="exchange.html">Identification</a></li>
+        <li  class=" "><a href="api.html">Payment</a></li>
+        <li  class=" "><a href="wallet-balance.html">Referral</a></li>
+        <li  class="last active"><a href="bank-details.html">Settings</a></li>
+                                    
 </ul>
 </div>
 </div>
@@ -70,14 +74,27 @@
 
 <div class="soci-out">
 
-<div class="mail_id_img2 hvr-grow-rotate">
-<a href="{{ url('/signin') }}"><div class="acc-ou-2-2">Login</div></a>
+<!-- <div class="mail_id_img2 hvr-grow-rotate">
+<a href="#" >
+<img src="{{ asset('user/images/Layer 23.png')}}">
+</a>
 </div>
 
 <div class="mail_id_img2 hvr-grow-rotate">
-<a href="{{ url('/signup') }}"><div class="acc-ou-1-1">Register</div></a>
-</div>
+<a href="#">
+<img src="{{ asset('user/images/Group 1.png')}}">
+</a>
+</div> -->
 
+
+
+
+
+<div class="mail_id_img2 hvr-grow-rotate">
+<a href="{{ url('user-logout')}}" >
+<img src="{{ asset('user/images/shutdown.png')}}">
+</a>
+</div>
 
 
 </div>

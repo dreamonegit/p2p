@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\ClearFormSession;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,9 +43,15 @@ Route::post('/forgotpassword', [App\Http\Controllers\UserController::class, 'for
 
 Auth::routes();
 
+Route::get('/user-logout', function () {
+   Auth::logout();
+   return redirect('signin');
+});
 
 
 Route::post('/userregistration', [App\Http\Controllers\UserController::class, 'signupuser']);
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
 Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin',ClearFormSession::class]], function(){
 	Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('home')->middleware('admin');

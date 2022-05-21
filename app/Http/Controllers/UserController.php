@@ -12,6 +12,9 @@ use Session;
 use Maatwebsite\Excel\Facades\Excel;
 use Redirect;
 use Auth, Validator, Response;
+use App\Http\Controllers\DashboardController;
+
+
 class UserController extends Controller
 {
 
@@ -70,16 +73,10 @@ class UserController extends Controller
 				$login = 1;
 			}
 			if($login == 1){
-				echo "in"; exit;
-				return Response::json(array(
-					'success' => true,
-					'message' => 'Successfully register please wait.....'
-				), 200);
+				//redirect to dashboard
+				return redirect('/dashboard');	
 			}else{
-				return Response::json(array(
-					'success' => false,
-					'errors' => array('Invalid email or mobile number pls enter valid information...')
-				), 400);
+				
 			}				
 		}
 	}
