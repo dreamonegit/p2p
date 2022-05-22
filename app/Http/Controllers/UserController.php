@@ -34,7 +34,8 @@ class UserController extends Controller
 		}else{
 			$msg = User::emailmobilecheckexist($request->input('email'));
 			if($msg!=''){
-				return redirect()->back()->with('message', 'Email id is already exist please use another mail id...'); 				
+
+				return redirect()->back()->with('failure', 'Email id is already exist.'); 				
 			}
 			$user = new User;
 			$user->email = $request->input('email'); 
@@ -51,7 +52,7 @@ class UserController extends Controller
 					$message->from(env('MAIL_FROM_ADDRESS'),'');
 				});
 			}*/
-			return redirect()->back()->with('Mobile number is already exist please use another mobile number...'); 			
+			return redirect()->back()->with('message','Account created successfully, once approved by admin you can login.'); 			
 		}
 	}
 	public function signin(Request $request){
