@@ -57,7 +57,7 @@
         <li  class=" "><a href="exchange.html">Identification</a></li>
         <li  class=" "><a href="api.html">Payment</a></li>
         <li  class=" "><a href="wallet-balance.html">Referral</a></li>
-        <li  class="last active"><a href="bank-details.html">Settings</a></li>
+        <li  class="last active"><a href="{{ url('user-profile') }}">Settings</a></li>
                                     
 </ul>
 </div>
