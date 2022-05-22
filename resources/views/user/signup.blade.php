@@ -6,11 +6,7 @@
 
 
 
-<div style="    padding-bottom: 30px;
-
-    float: left;
-
-    width: 100%;" >
+<div style="margin-top: 3%;padding-bottom: 30px;float: left;width: 100%;" >
 
 
 <div class="adminlogin_outer">
@@ -21,7 +17,20 @@
 <a href="{{ url('/') }}"><img class="signupbglo" src="{{ asset('user/images/logo.png') }}" ></a>
 </div>
 
-<h5 class="admin_head">Create a free account</h5>
+@if(session()->has('failure'))
+    <div class="alert alert-danger">
+        {{ session()->get('failure') }}
+    </div>
+@endif
+
+
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+@endif
+
+
 
 <div class="adminlogin_form">
 <form action="{{ url('userregistration') }}" method="post" name="l1" id="l1" autocomplete="off" enctype="multipart/form-data">@csrf

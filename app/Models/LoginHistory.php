@@ -8,11 +8,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Coin extends Authenticatable
+class LoginHistory extends Authenticatable
 {
     use Notifiable;
 	
-	protected $table="countries";
+	protected $table="login_historys";
 
 
 }

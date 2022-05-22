@@ -41,17 +41,33 @@ Route::get('/forgotpassword', [App\Http\Controllers\UserController::class, 'forg
 
 Route::post('/forgotpassword', [App\Http\Controllers\UserController::class, 'forgotpassword']);
 
-Auth::routes();
-
-Route::get('/user-logout', function () {
-   Auth::logout();
-   return redirect('signin');
-});
-
-
 Route::post('/userregistration', [App\Http\Controllers\UserController::class, 'signupuser']);
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Auth::routes();
+
+Route::group(['prefix' => 'user',  'middleware' => ['auth','user',ClearFormSession::class]], function(){
+	
+	Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
+
+	Route::get('/account', [App\Http\Controllers\DashboardController::class, 'account']);	
+	
+	Route::post('/updateprofile', [App\Http\Controllers\UserController::class, 'updateprofile']);
+	
+	Route::any('/profile-verification', [App\Http\Controllers\UserController::class, 'profileverification']);
+	
+	
+	Route::get('/logout', function () {
+	   Auth::logout();
+	   return redirect('signin');
+	});
+	
+});
+
+Route::get('/user-profile', [DashboardController::class, 'profile']);
+
+Route::post('/user-profile', [DashboardController::class, 'profile']);
+
+
 
 Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin',ClearFormSession::class]], function(){
 	Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('home')->middleware('admin');

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Hash;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Http\Request;
 use Storage;
+use App\Models\LoginHistory;
 use DB;
 use App\Models\User;
 use Carbon\Carbon;
@@ -34,7 +35,8 @@ class UserController extends Controller
 		}else{
 			$msg = User::emailmobilecheckexist($request->input('email'));
 			if($msg!=''){
-				return redirect()->back()->with('message', 'Email id is already exist please use another mail id...'); 				
+
+				return redirect()->back()->with('failure', 'Email id is already exist.'); 				
 			}
 			$user = new User;
 			$user->email = $request->input('email'); 
@@ -52,7 +54,7 @@ class UserController extends Controller
 					$message->from(env('MAIL_FROM_ADDRESS'),'');
 				});
 			}*/
-			return redirect()->back()->with('Mobile number is already exist please use another mobile number...'); 			
+			return redirect()->back()->with('message','Account created successfully, once approved by admin you can login.'); 			
 		}
 	}
 	public function signin(Request $request){
@@ -68,17 +70,73 @@ class UserController extends Controller
 			), 400);			
 		}else{
 			$login = 0;
-			if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('pass'), 'status' => 0])) {
+			if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('pass'), 'status' => 1])) {
 				$login = 1;				
-			}elseif(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('pass'), 'status' => 0])) {
+			}elseif(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('pass'), 'status' => 1])) {
 				$login = 1;
 			}
 			if($login == 1){
+				$loginhistory = new LoginHistory;
+				$loginhistory->userid = auth::user()->id;
+				$loginhistory->date  = date('Y-m-d H:i:s');
+				$loginhistory->ip  = \Request::ip();
+				$loginhistory->browser  = $request->header('User-Agent');
+				$loginhistory->created_at = date('Y-m-d H:i:s');
+				$loginhistory->save();
 				//redirect to dashboard
-				return redirect('/dashboard');	
+				return redirect('/user/dashboard');	
 			}else{
 				return redirect()->back()->with('failure', 'Invalid Credentials'); 	
 			}				
+		}
+	}
+	public function updateprofile(Request $request){
+			$user = User::where('id',auth::user()->id)->first();
+			$user->name = $request->input('fname'); 
+			$user->lname = $request->input('lname'); 
+			$user->gender = $request->input('gender'); 
+			$user->bkdate = $request->input('bkdate'); 
+			$user->address = $request->input('address'); 
+			$user->address1 = $request->input('address1'); 
+			$user->mobile = $request->input('mobile'); 
+			$user->country = $request->input('country'); 
+			$user->city = $request->input('city'); 
+			$user->state = $request->input('state'); 
+			$user->state_province = $request->input('state_province'); 
+			$user->pin = $request->input('pin'); 			
+			$user->save();
+			return redirect()->back()->with('message','Your profile is sucessfully updated...'); 			
+	}
+	public function profileverification(Request $request){
+		
+		if ($request->isMethod('post')){
+			$user = User::where('id',auth::user()->id)->first();			
+		   if ($request->file('card_front')) {
+				$image = $request->file('card_front');
+				$card_front = 'card_front' . time() . '_' . $image->getClientOriginalName();
+				$image_resize = Image::make($image->getRealPath());              
+				$image_resize->save(storage_path('app/public/card/' .$card_front));
+				$user->card_front = $card_front;
+			}
+		   if ($request->file('card_back')) {
+				$image = $request->file('card_back');
+				$card_back = 'card_back' . time() . '_' . $image->getClientOriginalName();
+				$image_resize = Image::make($image->getRealPath());              
+				$image_resize->save(storage_path('app/public/card/' .$card_back));
+				$user->card_back = $card_back;
+			}			
+		   if ($request->file('card_selfie')) {
+				$image = $request->file('card_selfie');
+				$card_selfie = 'card_selfie' . time() . '_' . $image->getClientOriginalName();
+				$image_resize = Image::make($image->getRealPath());              
+				$image_resize->save(storage_path('app/public/card/' .$card_selfie));
+				$user->card_selfie = $card_selfie;
+			}
+			$user->card_type = $request->input('card_type');
+			$user->save();
+			return redirect()->back()->with('message','Your Document has been sucessfully updated...'); 
+		}else{
+			return view('user.profileverification');
 		}
 	}
 	public function privacypolicy(){
@@ -127,5 +185,4 @@ class UserController extends Controller
 				}				
 			}				
 	}
-
 }

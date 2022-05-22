@@ -41,15 +41,34 @@ Route::get('/forgotpassword', [App\Http\Controllers\UserController::class, 'forg
 
 Route::post('/forgotpassword', [App\Http\Controllers\UserController::class, 'forgotpassword']);
 
+Route::post('/userregistration', [App\Http\Controllers\UserController::class, 'signupuser']);
+
 Auth::routes();
 
+<<<<<<< HEAD
 Route::get('/user-logout', function () {
    Auth::logout();
    return redirect('signin');
 });
+=======
+Route::group(['prefix' => 'user',  'middleware' => ['auth','user',ClearFormSession::class]], function(){
+	
+	Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
+>>>>>>> 19c506c002be7bb52e99d12f16acd10063852617
 
-
-Route::post('/userregistration', [App\Http\Controllers\UserController::class, 'signupuser']);
+	Route::get('/account', [App\Http\Controllers\DashboardController::class, 'account']);	
+	
+	Route::post('/updateprofile', [App\Http\Controllers\UserController::class, 'updateprofile']);
+	
+	Route::get('/profile-verification', [App\Http\Controllers\UserController::class, 'profileverification']);
+	
+	
+	Route::get('/logout', function () {
+	   Auth::logout();
+	   return redirect('signin');
+	});
+	
+});
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
