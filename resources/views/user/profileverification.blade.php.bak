@@ -28,7 +28,7 @@
    <div class="prof_verf">
       <h3>Profile Verification</h3>
 	  @if(isset(auth::user()->is_verified))
-		  @if(isset(auth::user()->is_verified==1))
+		  @if(auth::user()->is_verified==1)
 			<span class="unspa">Verified</span>
 		  @else
 			  <span class="unspa">Unverified</span>
@@ -79,7 +79,7 @@
                   <div class="upload_fun1">
 					@if(isset(auth::user()->card_front)) 
 						@if(auth::user()->card_front!='')
-							<img src="{{ asset('storage/card/'.auth::user()->card_front) }}" />
+							<img src="{{ asset('storage/card/'.auth::user()->card_front) }}" target='_blank'/>
 						@else
 							<img src="images/verf1.png" />
 						@endif
@@ -110,7 +110,7 @@
                   <div class="upload_fun1">
 					@if(isset(auth::user()->card_back)) 
 						@if(auth::user()->card_back!='')
-							<img src="{{ asset('storage/card/'.auth::user()->card_back) }}" />
+							<img src="{{ asset('storage/card/'.auth::user()->card_back) }}" target='_blank'/>
 						@else
 							<img src="images/verf1.png" />
 						@endif

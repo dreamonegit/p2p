@@ -79,7 +79,7 @@
                   <div class="upload_fun1">
 					@if(isset(auth::user()->card_front)) 
 						@if(auth::user()->card_front!='')
-							<img src="{{ asset('storage/card/'.auth::user()->card_front) }}" />
+							<img src="{{ asset('storage/card/'.auth::user()->card_front) }}" target='_blank'/>
 						@else
 							<img src="images/verf1.png" />
 						@endif
@@ -110,7 +110,7 @@
                   <div class="upload_fun1">
 					@if(isset(auth::user()->card_back)) 
 						@if(auth::user()->card_back!='')
-							<img src="{{ asset('storage/card/'.auth::user()->card_back) }}" />
+							<img src="{{ asset('storage/card/'.auth::user()->card_back) }}" target='_blank'/>
 						@else
 							<img src="images/verf1.png" />
 						@endif
@@ -143,7 +143,7 @@
                   <div class="upload_fun1">
 					@if(isset(auth::user()->card_selfie)) 
 						@if(auth::user()->card_selfie!='')
-							<img src="{{ asset('storage/card/'.auth::user()->card_selfie) }}" />
+							<img src="{{ asset('storage/card/'.auth::user()->card_selfie) }}" target='_blank'/>
 						@else
 							<img src="images/verf1.png" />
 						@endif
