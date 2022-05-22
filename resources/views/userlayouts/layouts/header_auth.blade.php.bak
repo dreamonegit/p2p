@@ -61,12 +61,12 @@
 <div class="menu-out">
  <div id='cssmenu'>
 <ul>
-        <li class="first  "><a href='#'>Dashboard</a></li>
+        <li class="first  "><a href='account.html'>Dashboard</a></li>
         <li  class=" "><a href="#">Security</a></li>
-        <li  class=" "><a href="#">Identification</a></li>
-        <li  class=" "><a href="#">Payment</a></li>
-        <li  class=" "><a href="#">Referral</a></li>
-        <li  class="last active"><a href="#">Settings</a></li>
+        <li  class=" "><a href="exchange.html">Identification</a></li>
+        <li  class=" "><a href="api.html">Payment</a></li>
+        <li  class=" "><a href="wallet-balance.html">Referral</a></li>
+        <li  class="last active"><a href="bank-details.html">Settings</a></li>
                                     
 </ul>
 </div>

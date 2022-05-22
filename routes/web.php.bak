@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\ClearFormSession;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,13 +37,31 @@ Route::get('/privacypolicy', [App\Http\Controllers\UserController::class, 'priva
 
 Route::get('/termsconditions', [App\Http\Controllers\UserController::class, 'termsconditions']);
 
+Route::get('/forgotpassword', [App\Http\Controllers\UserController::class, 'forgotpassword']);
+
 Route::post('/forgotpassword', [App\Http\Controllers\UserController::class, 'forgotpassword']);
+
+Route::post('/userregistration', [App\Http\Controllers\UserController::class, 'signupuser']);
 
 Auth::routes();
 
+Route::group(['prefix' => 'user',  'middleware' => ['auth','user',ClearFormSession::class]], function(){
+	
+	Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
 
-
-Route::post('/userregistration', [App\Http\Controllers\UserController::class, 'signupuser']);
+	Route::get('/account', [App\Http\Controllers\DashboardController::class, 'account']);	
+	
+	Route::post('/updateprofile', [App\Http\Controllers\UserController::class, 'updateprofile']);
+	
+	Route::get('/profile-verification', [App\Http\Controllers\UserController::class, 'profileverification']);
+	
+	
+	Route::get('/logout', function () {
+	   Auth::logout();
+	   return redirect('signin');
+	});
+	
+});
 
 Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin',ClearFormSession::class]], function(){
 	Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('home')->middleware('admin');

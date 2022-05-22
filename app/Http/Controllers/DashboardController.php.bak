@@ -39,7 +39,7 @@ class DashboardController extends Controller
 	
 	public function account(Request $request){
 		$this->data['countries'] = Countries::all();
-		$this->data['loghistory'] = LoginHistory::where('userid',auth::user()->id)->get();
+		$this->data['loghistory'] = Countries::all();
 		return view('user.account',$this->data);
 	}
 }
