@@ -63,6 +63,12 @@ Route::group(['prefix' => 'user',  'middleware' => ['auth','user',ClearFormSessi
 	
 });
 
+Route::get('/user-profile', [DashboardController::class, 'profile']);
+
+Route::post('/user-profile', [DashboardController::class, 'profile']);
+
+
+
 Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin',ClearFormSession::class]], function(){
 	Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('home')->middleware('admin');
 	Route::post('/state', [App\Http\Controllers\AdminController::class, 'state'])->middleware('admin');

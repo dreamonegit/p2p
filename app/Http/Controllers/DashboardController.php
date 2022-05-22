@@ -9,6 +9,7 @@ use DB;
 use App\Models\Coin;
 use App\Models\Countries;
 use App\Models\LoginHistory;
+use App\Models\User;
 use Carbon\Carbon;
 use Session;
 use Maatwebsite\Excel\Facades\Excel;
@@ -36,10 +37,33 @@ class DashboardController extends Controller
     {
 		return view('usersection.dashboard');
     }
-	
 	public function account(Request $request){
 		$this->data['countries'] = Countries::all();
 		$this->data['loghistory'] = LoginHistory::where('userid',auth::user()->id)->get();
 		return view('user.account',$this->data);
 	}
+    public function profile(Request $request){
+        
+        if ($request->isMethod('post')){
+            $user = User::where('id',auth::user()->id)->first();
+            $user->nickname = $request->input('nickname'); 
+
+            $image = $profile_images = '';   
+          /* if ($request->file('profile_image')) {
+                $image = $request->file('profile_image');
+                $profile_images = 'Profile_image' . time() . '_' . $image->getClientOriginalName();
+                $image_resize = Image::make($image->getRealPath());              
+                $image_resize->save(storage_path('app/public/profile/' .$profile_images));
+                 $user->profile_image = $profile_images;
+                //echo $profile_images; exit;
+            }*/
+            $user->save();
+            return redirect()->back()->with('message', 'Successfully updated');            
+        }else{
+
+            //get user profile
+            $this->data['user'] = User::where('id',auth::user()->id)->first();
+            return view('usersection.profile',$this->data);
+        }
+    }
 }
