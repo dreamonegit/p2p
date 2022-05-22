@@ -2,6 +2,7 @@
 
 @section('content')
 
+
 <body class="signupbg">
 
 
@@ -21,8 +22,12 @@
 <a href="{{ url('/') }}"><img class="signupbglo" src="{{ asset('user/images/logo.png') }}" ></a>
 </div>
 
+@if(session()->has('failure'))
+    <div class="alert alert-danger">
+        {{ session()->get('failure') }}
+    </div>
+@endif
 
-<h5 class="admin_head">Use your "Bit2atm" Account</h5>
 
 <div class="adminlogin_form">
 <form action="{{ url('signin') }}" method="post" name="l1" id="l1" autocomplete="off" enctype="multipart/form-data">@csrf

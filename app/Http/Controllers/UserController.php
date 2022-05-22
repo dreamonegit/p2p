@@ -76,7 +76,7 @@ class UserController extends Controller
 				//redirect to dashboard
 				return redirect('/dashboard');	
 			}else{
-				
+				return redirect()->back()->with('failure', 'Invalid Credentials'); 	
 			}				
 		}
 	}
