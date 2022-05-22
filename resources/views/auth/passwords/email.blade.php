@@ -1,18 +1,24 @@
-@extends('layouts.app')
+@extends('userlayouts.layouts.header')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+<body class="signupbg">
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+
+
+<div style="padding-bottom: 30px;float: left;width: 100%; margin-top:5%" >
+
+
+<div class="adminlogin_outer">
+
+<div class="adminlogin_inner">
+
+<div class="admminlogo_outer">
+<a href="{{ url('/') }}"><img class="signupbglo" src="{{ asset('user/images/logo.png') }}" ></a>
+</div>
+
+
+
+<div class="adminlogin_form">
 
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
@@ -31,17 +37,13 @@
                             </div>
                         </div>
 
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
+                        <div class="admin_box" style="margin-bottom:0px;margin-top: 5%;">
+                                <input type="submit" class="btn btn-primary" 
+                                    value="{{ __('Send Password Reset Link') }}" />
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
