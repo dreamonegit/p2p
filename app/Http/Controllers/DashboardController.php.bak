@@ -7,13 +7,9 @@ use Illuminate\Http\Request;
 use Storage;
 use DB;
 use App\Models\Coin;
-<<<<<<< HEAD
 use App\Models\Countries;
 use App\Models\LoginHistory;
-=======
 use App\Models\User;
-
->>>>>>> 4165d1deff099339c6036a5f1f251ae82f4d79e5
 use Carbon\Carbon;
 use Session;
 use Maatwebsite\Excel\Facades\Excel;
@@ -39,18 +35,14 @@ class DashboardController extends Controller
      */
     public function index(Request $request)
     {
-		return view('usersection.dashboard');
+		$this->data['coin'] = Coin::paginate(3);
+		return view('usersection.dashboard',$this->data);
     }
-<<<<<<< HEAD
-	
 	public function account(Request $request){
 		$this->data['countries'] = Countries::all();
 		$this->data['loghistory'] = LoginHistory::where('userid',auth::user()->id)->get();
 		return view('user.account',$this->data);
 	}
-=======
-
-
     public function profile(Request $request){
         
         if ($request->isMethod('post')){
@@ -75,5 +67,4 @@ class DashboardController extends Controller
             return view('usersection.profile',$this->data);
         }
     }
->>>>>>> 4165d1deff099339c6036a5f1f251ae82f4d79e5
 }

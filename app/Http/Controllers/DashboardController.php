@@ -35,7 +35,8 @@ class DashboardController extends Controller
      */
     public function index(Request $request)
     {
-		return view('usersection.dashboard');
+		$this->data['coin'] = Coin::paginate(10);
+		return view('usersection.dashboard',$this->data);
     }
 	public function account(Request $request){
 		$this->data['countries'] = Countries::all();

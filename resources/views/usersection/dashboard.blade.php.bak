@@ -39,6 +39,7 @@
             </table>
          </div>
          <div class="excc-bpx-1">
+            <div class="excc-box-1-1"><</div>
             {!! $coin->links() !!}
          </div>
       </div>
