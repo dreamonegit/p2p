@@ -75,13 +75,14 @@ class AdminController extends Controller
 			return view('');
 		}		
 	}
-     public function edituser($id)
+  /*   public function edituser($id)
     {
         $this->data["user"] = $this->user->where("id", $id)->first();
 		$this->data["user"] = $this->user->get();
         return view('admin.list-user',$this->data);
-    }
+    }*/
 	public function deleteuser($id){
+		echo "ssfsds"; exit;
 		$user = $this->user->where('id',$id)->delete();
 		return redirect('/admin/list-user');
 	}

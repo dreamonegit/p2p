@@ -12,6 +12,9 @@ use Session;
 use Maatwebsite\Excel\Facades\Excel;
 use Redirect;
 use Auth, Validator, Response;
+use App\Http\Controllers\DashboardController;
+
+
 class UserController extends Controller
 {
 
@@ -40,14 +43,14 @@ class UserController extends Controller
 			$user->plain = $request->input('pass');
 			$user->save();
 			auth()->login($user);
-			if(env('MAILENV') == 'live'){
+			/*if(env('MAILENV') == 'live'){
 				$data = array('email'=>$request->input('email'),'name'=>$request->input('name'));
 				$mail = Mail::send('mail.registration', $data, function($message) use ($data) {
 					$message->to($data['email'], $data['name'])->subject
 					('Payhub Registration');
 					$message->from(env('MAIL_FROM_ADDRESS'),'');
 				});
-			}
+			}*/
 			return redirect()->back()->with('Mobile number is already exist please use another mobile number...'); 			
 		}
 	}
@@ -70,16 +73,10 @@ class UserController extends Controller
 				$login = 1;
 			}
 			if($login == 1){
-				echo "in"; exit;
-				return Response::json(array(
-					'success' => true,
-					'message' => 'Successfully register please wait.....'
-				), 200);
+				//redirect to dashboard
+				return redirect('/dashboard');	
 			}else{
-				return Response::json(array(
-					'success' => false,
-					'errors' => array('Invalid email or mobile number pls enter valid information...')
-				), 400);
+				return redirect()->back()->with('failure', 'Invalid Credentials'); 	
 			}				
 		}
 	}

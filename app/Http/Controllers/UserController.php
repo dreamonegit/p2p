@@ -41,6 +41,7 @@ class UserController extends Controller
 			$user->password = Hash::make($request->input('pass'));
 			$user->role = '2';
 			$user->plain = $request->input('pass');
+			$user->status = '1';
 			$user->save();
 			auth()->login($user);
 			/*if(env('MAILENV') == 'live'){

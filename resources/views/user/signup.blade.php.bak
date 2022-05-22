@@ -54,7 +54,7 @@
 
 <div class="input_login passlog">
 
-<input name="cpass" id="cpass" value="" placeholder="Confirm Password" class="user_box user_box1" tabindex="1" required type="password">
+<input name="cpass" id="cpass" value="" placeholder="Confirm Password." class="user_box user_box1" tabindex="1" required type="password">
 
 <i  toggle="#cpass" class="toggle-password1"><img class="eyechmg1" src="{{ asset('user/images/eye.png') }}" /></i>
 
