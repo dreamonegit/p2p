@@ -59,19 +59,12 @@
                <div class="menu-out">
                   <div id='cssmenu'>
                      <ul>
-                        <li class="first  "><a href='#'>Dashboard</a></li>
+                        <li class="first  "><a href='{{ url("user/dashboard") }}'>Dashboard</a></li>
                         <li  class=" "><a href="#">Security</a></li>
-                        <<<<<<< HEAD
                         <li  class=" "><a href="#">Identification</a></li>
                         <li  class=" "><a href="#">Payment</a></li>
                         <li  class=" "><a href="#">Referral</a></li>
                         <li  class="last active"><a href="#">Settings</a></li>
-                        =======
-                        <li  class=" "><a href="exchange.html">Identification</a></li>
-                        <li  class=" "><a href="api.html">Payment</a></li>
-                        <li  class=" "><a href="wallet-balance.html">Referral</a></li>
-                        <li  class="last active"><a href="{{ url('user-profile') }}">Settings</a></li>
-                        >>>>>>> 4165d1deff099339c6036a5f1f251ae82f4d79e5
                      </ul>
                   </div>
                </div>

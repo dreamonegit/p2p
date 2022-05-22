@@ -59,7 +59,7 @@
                <div class="menu-out">
                   <div id='cssmenu'>
                      <ul>
-                        <li class="first  "><a href='#'>Dashboard</a></li>
+                        <li class="first  "><a href='{{ url("/user/dashboard") }}'>Dashboard</a></li>
                         <li  class=" "><a href="#">Security</a></li>
                         <li  class=" "><a href="#">Identification</a></li>
                         <li  class=" "><a href="#">Payment</a></li>
