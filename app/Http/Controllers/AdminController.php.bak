@@ -66,23 +66,24 @@ class AdminController extends Controller
 		return view('admin.list-user',$this->data);
 	}
 	public function saveuser(Request $request){
+		if($request->input('hid')){
+			$user = User::where('id',$request->input('hid'))->first();
+		}else{
+			$user = new User();
+		}
 		if ($request->isMethod('post')){
 			$user = User::where('id',auth::user()->id)->first(); 
 			$user->email = $request->input('email'); 
             $user->save();
 			return redirect()->back()->with('message', 'Successfully profile is updated...');			
-		}else{
-			return view('');
 		}		
 	}
-  /*   public function edituser($id)
+     public function edituser($id)
     {
         $this->data["user"] = $this->user->where("id", $id)->first();
-		$this->data["user"] = $this->user->get();
         return view('admin.list-user',$this->data);
-    }*/
+    }
 	public function deleteuser($id){
-		echo "ssfsds"; exit;
 		$user = $this->user->where('id',$id)->delete();
 		return redirect('/admin/list-user');
 	}

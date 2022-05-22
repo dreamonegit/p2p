@@ -71,14 +71,11 @@ class AdminController extends Controller
 			$user->email = $request->input('email'); 
             $user->save();
 			return redirect()->back()->with('message', 'Successfully profile is updated...');			
-		}else{
-			return view('');
 		}		
 	}
      public function edituser($id)
     {
         $this->data["user"] = $this->user->where("id", $id)->first();
-		$this->data["user"] = $this->user->get();
         return view('admin.list-user',$this->data);
     }
 	public function deleteuser($id){
