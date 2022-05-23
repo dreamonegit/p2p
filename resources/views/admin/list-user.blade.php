@@ -42,7 +42,12 @@
                         <thead>
                           <tr>
                             <th> ID </th>
-                            <th>Email Address</th>
+							<th>Name</th>
+							<th>Last Name</th>
+							<th>Date Of Birth</th>
+							<th>Email</th>
+							<th>Mobile</th>
+							<th>Address</th>
 							<th>Status</th>
 							<th> Edit </th>
 							<th> Delete </th>
@@ -57,7 +62,22 @@
 									{{ $userval->id }}
 								  </td>
 								  <td>
+									{{ $userval->name  }}
+								  </td>
+								  <td>
+									{{ $userval->lname  }}
+								  </td>
+								  <td>
+									{{ $userval->bkdate  }}
+								  </td>
+								  <td>
 									{{ $userval->email  }}
+								  </td>
+								  <td>
+									{{ $userval->mobile  }}
+								  </td>
+								  <td>
+									{{ $userval->address  }}
 								  </td>
 									  <td>
 									@if($userval->status==1)

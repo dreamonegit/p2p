@@ -73,7 +73,12 @@ class AdminController extends Controller
         }
 		if ($request->isMethod('post')){
 			$this->data['user'] = User::where('role',2)->first();
-			$user->email = $request->input('email'); 
+			$user->name	 = $request->input('name'); 
+			$user->lname = $request->input('lname');  
+			$user->bkdate = $request->input('bkdate'); 
+			$user->email = $request->input('email');
+            $user->mobile = $request->input('mobile');
+            $user->address = $request->input('address'); 			
 			$user->role = '2';
 			$user->status = $request->input('status');
             $user->save();
