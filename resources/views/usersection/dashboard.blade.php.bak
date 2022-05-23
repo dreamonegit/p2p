@@ -32,7 +32,7 @@
 					  </td>
 					  <td>
 						 <div class="package-title-exc">
-							<span><img src="{{ asset('storage/coin/'.$coinval->image) }}"></span> 
+							<span><img src="{{ asset('storage/card/'.$coinval->image) }}"></span> 
 							<div class="exc-acc-ou-10">
 							   <div class="exc-acc-ou-10-10">  {{ $coinval->coinname }}({{ $coinval->symbol }})</div>
 							</div>
