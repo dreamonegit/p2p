@@ -67,7 +67,7 @@
 									@endif
 								  </td>
 								 <td>
-									<a class="badge badge-info linkdec" href="{{ url('/admin/edit-user/'.$userval->id) }}">Edit</a>
+									<a class="badge badge-info linkdec" href="{{ url('/admin/view-user/'.$userval->id) }}">Edit</a>
 								 </td>
 								  <td>
 									<a class="badge badge-danger" href="{{ url('/admin/delete-user/'.$userval->id) }}">Delete</a>

@@ -30,9 +30,11 @@
                 <div class="card">
                   <div class="card-body">
 					<form id="coin-form" action="{{ url('/admin/save-user') }}" method="POST" enctype="multipart/form-data">@csrf
-						@if(isset($user))
-							<input type="hidden" name="hid" value="{{ $user->id }}"> 
-						@endif
+					@if(isset($user))
+					<input type="hidden" name="id" value="{{$user->id}}">
+					@else
+					<input type="hidden" name="id" value="0">
+					@endif
 						<div class="form-group">
 						  <label class="required">E-mail</label>
 						  <input type="text" class="form-control form-control-lg" placeholder="E-mail" name="email" aria-label="E-mail" value="@if(isset($user)){{ $user->email }} @endif">

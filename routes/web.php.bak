@@ -45,22 +45,15 @@ Route::post('/userregistration', [App\Http\Controllers\UserController::class, 's
 
 Auth::routes();
 
-<<<<<<< HEAD
-Route::get('/user-logout', function () {
-   Auth::logout();
-   return redirect('signin');
-});
-=======
 Route::group(['prefix' => 'user',  'middleware' => ['auth','user',ClearFormSession::class]], function(){
 	
 	Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
->>>>>>> 19c506c002be7bb52e99d12f16acd10063852617
 
 	Route::get('/account', [App\Http\Controllers\DashboardController::class, 'account']);	
 	
 	Route::post('/updateprofile', [App\Http\Controllers\UserController::class, 'updateprofile']);
 	
-	Route::get('/profile-verification', [App\Http\Controllers\UserController::class, 'profileverification']);
+	Route::any('/profile-verification', [App\Http\Controllers\UserController::class, 'profileverification']);
 	
 	
 	Route::get('/logout', function () {
@@ -70,7 +63,11 @@ Route::group(['prefix' => 'user',  'middleware' => ['auth','user',ClearFormSessi
 	
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/user-profile', [DashboardController::class, 'profile']);
+
+Route::post('/user-profile', [DashboardController::class, 'profile']);
+
+
 
 Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin',ClearFormSession::class]], function(){
 	Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('home')->middleware('admin');
@@ -78,8 +75,9 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin',ClearFormSes
 	Route::get('/logout', [App\Http\Controllers\AdminController::class, 'logout'])->middleware('admin');
 	Route::any('/myprofile', [App\Http\Controllers\AdminController::class, 'myprofile'])->middleware('admin');
 	Route::get('/list-user', [App\Http\Controllers\AdminController::class, 'listuser'])->middleware('admin');
+	Route::post('/update-user', [App\Http\Controllers\AdminController::class, 'updateuser'])->middleware('admin');
 	Route::post('/save-user', [App\Http\Controllers\AdminController::class, 'saveuser'])->middleware('admin');
-	Route::get('/edit-user', [App\Http\Controllers\AdminController::class, 'edituser'])->middleware('admin');
+	Route::get('/view-user/{id}', [App\Http\Controllers\AdminController::class, 'viewuser'])->middleware('admin');
 	Route::get('/delete-user/{id}', [App\Http\Controllers\AdminController::class, 'deleteuser'])->middleware('admin');
 	Route::get('/listcoin', [App\Http\Controllers\CoinController::class, 'index'])->middleware('admin');
 	Route::get('/edit-coin/{id}', [App\Http\Controllers\CoinController::class, 'savecoin'])->middleware('admin');
