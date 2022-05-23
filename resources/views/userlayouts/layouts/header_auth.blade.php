@@ -12,6 +12,7 @@
       <!--home silder-->
       <link href="{{ asset('user/acheiver-slider/owl.carousel.css')}}" rel="stylesheet">
       <script src="{{ asset('user/acheiver-slider/owl.carousel.js')}}"></script>
+	  <script  src="{{ asset('user/pop-sel/script.js') }}"></script>
       <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
       <link rel="stylesheet" href="/resources/demos/style.css">
       <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
@@ -60,6 +61,7 @@
                   <div id='cssmenu'>
                      <ul>
                         <li class="first  "><a href='{{ url("/user/dashboard") }}'>Dashboard</a></li>
+						<li  class=" "><a href="{{ url('/exchange') }}">Exchange </a></li>
                         <li  class=" "><a href="#">Security</a></li>
                         <li  class=" "><a href="#">Identification</a></li>
                         <li  class=" "><a href="#">Payment</a></li>

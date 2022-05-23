@@ -8,6 +8,8 @@ use Storage;
 use App\Models\LoginHistory;
 use DB;
 use App\Models\User;
+use App\Models\Deposit;
+use App\Models\Coin;
 use Carbon\Carbon;
 use Session;
 use Maatwebsite\Excel\Facades\Excel;
@@ -138,10 +140,51 @@ class UserController extends Controller
 			return view('user.profileverification');
 		}
 	}
+	public function exchange(Request $request){
+		 $this->data['portpolio'] = Coin::sum('total_amount');
+		 $this->data['coin'] = Coin::paginate(10);
+		 return view('user.exchange',$this->data);	
+	}
+	public function deposit(Request $request){
+		if ($request->isMethod('post')){
+			if($request->input('existingcoin') && $request->input('existingcoin')!=''){
+				$deposit = Deposit::where('coin_id',$request->input('existingcoin'))->first();
+				if(isset($deposit->id)){
+					$deposit->qty = $request->input('qty') + $deposit->qty;
+				}else{
+					$deposit = new Deposit;
+					$deposit->qty = $request->input('qty'); 					
+				}
+				 
+			}else{
+				$deposit = new Deposit;
+				$deposit->qty = $request->input('qty'); 
+			}
+			$deposit->user_id = auth::user()->id; 
+			$deposit->coin_id = $request->input('coin_id'); 
+			$deposit->deposit_address = $request->input('deposit_address'); 
+			$deposit->created_at = date('Y-m-d H:i:s');
+			$deposit->updated_at = date('Y-m-d H:i:s');
+			$deposit->save();
+			return redirect('/user/dashboard')->with('message','Sucessfully deposit...'); 
+		}else{
+			$this->data['id'] = $request->id;
+			$this->data['coin'] = Coin::where('status',1)->get();
+			return view('user.deposit',$this->data);
+		}
+	}
+	public function getcoinaddress(Request $request){
+		$coinaddress = Coin::select('depositaddress','total_volume')->where('id',$request->input('coin'))->first();
+		$url = 'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl='.$coinaddress->depositaddress.'&chco=#FF5733';
+		return Response::json(array(
+			'url' => $url,
+			'address' => $coinaddress->depositaddress,
+			'total_volume' => $coinaddress->total_volume
+		), 200);
+	}
 	public function privacypolicy(){
 		
       return view('user.privacypolicy');
-
 	}
 	public function termsconditions(){
 		

@@ -142,7 +142,7 @@
 							</div>
 							<div class="form-group col-md-6">
 							  <label class="required">Total Amount:</label>
-							  <input type="text" class="form-control form-control-lg" name="total_amount" placeholder="Total Amount:" aria-label="Total Amount" value="@if(isset($coin)){{ $coin->total_amount }} @endif">
+							  <input type="text" class="form-control form-control-lg" name="total_amount" placeholder="Total Volume:" aria-label="Total Volume" value="@if(isset($coin)){{ $coin->total_amount }} @endif">
 							</div>
 						</div>
 						<div class="form-group">

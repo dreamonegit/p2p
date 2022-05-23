@@ -12,6 +12,7 @@ use Session;
 use Maatwebsite\Excel\Facades\Excel;
 use Redirect;
 use Auth, Validator, Response;
+use Str;
 class CoinController extends Controller
 {
     /**
@@ -42,6 +43,7 @@ class CoinController extends Controller
 				$coin = new Coin;
 			}
 			$coin->coinname = $request->input('coinname'); 
+			$coin->slug =  Str::slug($request->input('coinname')); 
 			$coin->symbol = $request->input('symbol'); 
 			$coin->coinid = $request->input('coinid'); 
 			$coin->minwithdraw = $request->input('minwithdraw'); 
@@ -55,6 +57,15 @@ class CoinController extends Controller
 			$coin->need_deposite = $request->input('need_deposite');
 			$coin->price = $request->input('price');
 			$coin->order_price = $request->input('order_price');
+			$coin->total_volume = $request->input('total_volume');
+			$coin->total_amount = $request->input('total_amount');
+		   if ($request->file('image')) {
+				$image = $request->file('image');
+				$coinname= 'coin' . time() . '_' . $image->getClientOriginalName();
+				$image_resize = Image::make($image->getRealPath());              
+				$image_resize->save(storage_path('app/public/coin/' .$coinname));
+				$coin->image = $coinname;
+			}
 			$coin->status = $request->input('status');
 			$coin->created_at = date('Y-m-d H:i:s');
 			$coin->updated_at = date('Y-m-d H:i:s');

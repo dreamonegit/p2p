@@ -43,6 +43,8 @@ Route::post('/forgotpassword', [App\Http\Controllers\UserController::class, 'for
 
 Route::post('/userregistration', [App\Http\Controllers\UserController::class, 'signupuser']);
 
+Route::any('/exchange', [App\Http\Controllers\UserController::class, 'exchange']);
+
 Auth::routes();
 
 Route::group(['prefix' => 'user',  'middleware' => ['auth','user',ClearFormSession::class]], function(){
@@ -55,19 +57,17 @@ Route::group(['prefix' => 'user',  'middleware' => ['auth','user',ClearFormSessi
 	
 	Route::any('/profile-verification', [App\Http\Controllers\UserController::class, 'profileverification']);
 	
+	Route::get('/deposit/{id}', [App\Http\Controllers\UserController::class, 'deposit']);
+	
+	Route::post('/deposit', [App\Http\Controllers\UserController::class, 'deposit']);
+	
+	Route::any('/getcoinaddress', [App\Http\Controllers\UserController::class, 'getcoinaddress']);
 	
 	Route::get('/logout', function () {
 	   Auth::logout();
 	   return redirect('signin');
 	});
-	
 });
-
-Route::get('/user-profile', [DashboardController::class, 'profile']);
-
-Route::post('/user-profile', [DashboardController::class, 'profile']);
-
-
 
 Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin',ClearFormSession::class]], function(){
 	Route::get('/home', [App\Http\Controllers\AdminController::class, 'index'])->name('home')->middleware('admin');

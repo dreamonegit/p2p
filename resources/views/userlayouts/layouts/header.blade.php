@@ -52,7 +52,7 @@
                   <div id='cssmenu'>
                      <ul>
                         <li  class="first active"><a href="#">Trade </a></li>
-                        <li  class=" "><a href="exchange.html">Exchange </a></li>
+                        <li  class=" "><a href="{{ url('/exchange') }}">Exchange </a></li>
                         <li  class=" "><a href="api.html">API </a></li>
                      </ul>
                   </div>
