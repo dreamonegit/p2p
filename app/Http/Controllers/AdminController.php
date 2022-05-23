@@ -23,6 +23,7 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+		  $this->user = new User();
     }
 
     /**
@@ -59,6 +60,41 @@ class AdminController extends Controller
 			$this->data['title'] = 'My Profile';
 			return view('admin.mypofile', $this->data);			
 		} 		
+	}
+	public function listuser(Request $request){
+		$this->data["user"] = $this->user->get();
+		return view('admin.list-user',$this->data);
+	}
+	public function saveuser(Request $request){
+        if ($request->input("id") != 0) {
+            $user = User::where("id", $request->input("id"))->first();
+        } else {
+            $user = new User();
+        }
+		if ($request->isMethod('post')){
+			$this->data['user'] = User::where('role',2)->first();
+			$user->name	 = $request->input('name'); 
+			$user->lname = $request->input('lname');  
+			$user->bkdate = $request->input('bkdate'); 
+			$user->email = $request->input('email');
+            $user->mobile = $request->input('mobile');
+            $user->address = $request->input('address'); 			
+			$user->role = '2';
+			$user->status = $request->input('status');
+            $user->save();
+			return redirect()->back()->with('message', 'Successfully profile is updated...');			
+		}else{
+			return view('admin.list-user',$this->data);
+		}		
+	}
+     public function viewuser($id)
+    {
+        $this->data["user"] = $this->user->where("id", $id)->first();
+        return view('admin.view-user',$this->data);
+    }
+	public function deleteuser($id){
+		$user = $this->user->where('id',$id)->delete();
+		return redirect('/admin/list-user');
 	}
 	 public function logout(){
 		

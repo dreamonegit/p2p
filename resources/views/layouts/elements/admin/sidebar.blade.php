@@ -18,13 +18,19 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ url('admin/home') }}">
                 <span class="menu-title">Dashboard</span>
-                <i class="mdi mdi-home menu-icon"></i>
+                <i class="mdi mdi-home menu-icon mdi-24px float-right"></i>
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url('admin/listcoin') }}">
-                <span class="menu-title">Coin</span>
-                <i class="mdi mdi-home menu-icon"></i>
+                <span class="menu-title">Coin Details</span>
+                <i class="mdi mdi-bitcoin menu-icon mdi-24px float-right"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url('admin/list-user') }}">
+                <span class="menu-title">User Details</span>
+                <i class="mdi mdi-account-details menu-icon mdi-24px float-right"></i>
               </a>
             </li>
           </ul>
