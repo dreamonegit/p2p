@@ -145,8 +145,17 @@ class UserController extends Controller
 		 $this->data['coin'] = Coin::paginate(10);
 		 return view('user.exchange',$this->data);	
 	}
+	public function wallet(Request $request){
+		$this->data['wallet'] = Deposit::where('user_id',auth::user()->id)->where('approved',1)->get();
+		return view('user.wallet',$this->data);	
+	}
+	public function deposithistory(Request $request){
+		$this->data['deposithistory'] = Deposit::where('user_id',auth::user()->id)->where('approved',0)->get();
+		return view('user.depositstatus',$this->data);			
+	}
 	public function deposit(Request $request){
 		if ($request->isMethod('post')){
+			$coin = Coin::where('id',$request->input('coin_id'))->first();
 			if($request->input('existingcoin') && $request->input('existingcoin')!=''){
 				$deposit = Deposit::where('coin_id',$request->input('existingcoin'))->first();
 				if(isset($deposit->id)){
@@ -160,6 +169,7 @@ class UserController extends Controller
 				$deposit = new Deposit;
 				$deposit->qty = $request->input('qty'); 
 			}
+			$deposit->amount = $request->input('qty') * $coin->price ; 
 			$deposit->user_id = auth::user()->id; 
 			$deposit->coin_id = $request->input('coin_id'); 
 			$deposit->deposit_address = $request->input('deposit_address'); 
@@ -174,12 +184,13 @@ class UserController extends Controller
 		}
 	}
 	public function getcoinaddress(Request $request){
-		$coinaddress = Coin::select('depositaddress','total_volume')->where('id',$request->input('coin'))->first();
+		$coinaddress = Coin::select('depositaddress','total_volume','price')->where('id',$request->input('coin'))->first();
 		$url = 'https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl='.$coinaddress->depositaddress.'&chco=#FF5733';
 		return Response::json(array(
 			'url' => $url,
 			'address' => $coinaddress->depositaddress,
-			'total_volume' => $coinaddress->total_volume
+			'total_volume' => $coinaddress->total_volume,
+			'coinamount' => $coinaddress->price
 		), 200);
 	}
 	public function privacypolicy(){

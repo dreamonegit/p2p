@@ -119,7 +119,7 @@
 	});
 	function amountcalculation(qty){
 		var totalamount = parseInt($('#singlecoinprice').val()) * parseInt(qty.value);
-		$('#totalamount').html('<label style="text-align:center;color:red">Total amount is INR '+totalamount+'</label>');		
+		$('#totalamount').html('<p style="text-align:center;color:red">Total amount is INR '+totalamount+'</p>');		
 	}
 function copyToClipboard(element) {
   var $temp = $("<input>");

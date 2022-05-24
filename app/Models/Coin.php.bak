@@ -23,7 +23,7 @@ class Coin extends Authenticatable
 	
 	public static function getcoinname($id){
 		
-		$coin = self::select('coinname','symbol')->where('id',$id)->first();
+		$coinname = self::select('coinname','symbol')->where('id',$id)->first();
 		
 		return array('coinname'=>$coin->coinname,'symbol'=>$coin->symbol);
 	}

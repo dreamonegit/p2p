@@ -46,6 +46,7 @@
 					  <td>
 						 <div class="exc-border--4">
 							@if(auth::user())
+								
 								<a href="{{ url('/user/deposit/'.$coinval->id) }}">
 								   <div class="exxc-acc-ou-1-1 deposit">Deposit</div>
 								</a>
