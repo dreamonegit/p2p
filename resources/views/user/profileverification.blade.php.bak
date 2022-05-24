@@ -23,7 +23,7 @@
             </a>
          </div>
          <div class="acc-ou-2">
-            <a href="{{ url('/user/deposit-history') }}">
+            <a href="{{ url('/user/wallet') }}">
                <div class="@if(Request::segment(2)=='deposit-history') {{ 'acc-ou-1-1' }} @else acc-ou-2-2 @endif">Deposit History</div>
             </a>
          </div>

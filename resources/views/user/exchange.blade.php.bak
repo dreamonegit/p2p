@@ -246,13 +246,20 @@
                   </th>
                </tr>
 			   @foreach($coin as $coinval)
+				   <?php 
+						if($coinval->need_deposite==0){
+							$need_deposite = '<a href="#"> <div class="exxc-acc-ou-1-1" style="background-color:gray">Deposit</div></a>';
+						}else{
+							$need_deposite = '<a href="'.url('/user/deposit/'.$coinval->id).'"> <div class="exxc-acc-ou-1-1 deposit">Deposit</div></a>';
+						}
+				   ?>
 				   <tr>
 					  <td>
 						 <div class="exc-border--2">1</div>
 					  </td>
 					  <td>
 						 <div class="package-title-exc">
-							<span><img src="{{ asset('storage/card/'.$coinval->image) }}"></span> 
+							<span><img src="{{ asset('storage/coin/'.$coinval->image) }}"></span> 
 							<div class="exc-acc-ou-10">
 							   <div class="exc-acc-ou-10-10">  {{ $coinval->coinname }}({{ $coinval->symbol }})</div>
 							</div>
@@ -266,9 +273,7 @@
 					  <td>
 						 <div class="exc-border--4">
 							@if(auth::user())
-								<a href="{{ url('/user/deposit/'.$coinval->id) }}">
-								   <div class="exxc-acc-ou-1-1 deposit">Deposit</div>
-								</a>
+								<?php echo $need_deposite ?>
 								<a href="{{ url('/user/withdraw/'.$coinval->id) }}">
 								   <div class="exxc-acc-ou-2-2 withdraw">Withdraw</div>
 								</a>

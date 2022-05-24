@@ -4,7 +4,7 @@
 <!--body-start--->
 <div class="header-out-1">
    <div class="container">
-      <div class="col-md-12">
+      <div class="col-md-6">
          <div class="acc-ou-1">
             <a href="{{ url('/user/account') }}">
                <div class="acc-ou-1-1">Account</div>
