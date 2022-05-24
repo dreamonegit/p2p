@@ -64,6 +64,46 @@
 							</div>
 						</div>
 						<div class="row">
+							<div class="form-group col-md-4">
+							  <label class="required">Address1</label>
+							  <input type="text" class="form-control form-control-lg" name="address1" placeholder="Address1 " aria-label="address1" value="@if(isset($user)){{ $user->address1 }} @endif">
+							</div>
+    						 <div class="form-group col-md-4">
+        						<label class="required">Country</label>
+        			           <select class="form-control form-control-lg" id="countries" name="name">
+        				        <option value="">---Choose the Country ---</option>
+								 @foreach($countries as $countriesvalue)
+								   <option value="{{ $countriesvalue->countries}}" @if(isset($user))@if($user->countries==$countriesvalue->countries) {{ "selected" }} @endif @endif>{{ $countriesvalue->nicename }} </option>
+								    @endforeach
+        						  </select>
+    						</div>
+							<div class="form-group col-md-4">
+							  <label class="required">State</label>
+							  <input type="text" class="form-control form-control-lg" name="state" placeholder="State " aria-label="state" value="@if(isset($user)){{ $user->state }} @endif">
+							</div>
+						</div>
+						<div class="row">
+							<div class="form-group col-md-4">
+							  <label class="required">City</label>
+							  <input type="text" class="form-control form-control-lg" name="city" placeholder="City" aria-label="city" value="@if(isset($user)){{ $user->city }} @endif">
+							</div>
+ 							<div class="form-group col-md-4">
+							  <label class="required">pin</label>
+							  <input type="text" class="form-control form-control-lg" name="pin" placeholder="Pin" aria-label="city" value="@if(isset($user)){{ $user->pin }} @endif">
+							</div>
+					   <div class="form-group col-md-4">
+						  <div class="required">
+							 Gender
+						  </div>
+						  <select name="gender" id="service" class="form-control form-control-lg" required="">
+							 <option value="">Select Gender</option>
+							 <option value="1" @if(isset($user))@if($user->gender==1) {{ "selected" }} @endif @endif>Male </option>
+							 <option value="2" @if(isset($user))@if($user->gender==2) {{ "selected" }} @endif @endif>Female</option>
+							 <option value="3" @if(isset($user))@if($user->gender==3) {{ "selected" }} @endif @endif>Others</option>
+						  </select>
+					   </div>
+						</div>
+						<div class="row">
 						<div class="form-group col-md-4">
 						  <label for="exampleFormControlSelect1">Status</label>
 						  <select class="form-control form-control-lg" id="status" name="status">

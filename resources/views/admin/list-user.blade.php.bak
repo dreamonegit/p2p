@@ -62,7 +62,22 @@
 									{{ $userval->id }}
 								  </td>
 								  <td>
+									{{ $userval->names  }}
+								  </td>
+								  <td>
+									{{ $userval->lname  }}
+								  </td>
+								  <td>
+									{{ $userval->bkdate  }}
+								  </td>
+								  <td>
 									{{ $userval->email  }}
+								  </td>
+								  <td>
+									{{ $userval->mobile  }}
+								  </td>
+								  <td>
+									{{ $userval->address  }}
 								  </td>
 									  <td>
 									@if($userval->status==1)
