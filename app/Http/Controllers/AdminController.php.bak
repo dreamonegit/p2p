@@ -9,6 +9,7 @@ use DB;
 use App\Models\User;
 use App\Models\State;
 use App\Models\Countries;
+use App\Models\Deposit;
 use Carbon\Carbon;
 use Session;
 use Maatwebsite\Excel\Facades\Excel;
@@ -26,6 +27,7 @@ class AdminController extends Controller
         $this->middleware('auth');
 		$this->user = new User();
 		$this->countries = new Countries();
+		$this->deposit = new Deposit();
     }
 
     /**
@@ -69,14 +71,13 @@ class AdminController extends Controller
 		return view('admin.list-user',$this->data);
 	}
 	public function saveuser(Request $request){
-        if ($request->input("id") != 0) {
+		if ($request->isMethod('post')){
+         if ($request->input("id") != 0) {
             $user = User::where("id", $request->input("id"))->first();
         } else {
             $user = new User();
         }
-		if ($request->isMethod('post')){
-			$this->data['user'] = User::where('role',2)->first();
-			$user->names = $request->input('names'); 
+			$user->name = $request->input('name'); 
 			$user->lname = $request->input('lname');  
 			$user->bkdate = $request->input('bkdate'); 
 			$user->email = $request->input('email');
@@ -104,6 +105,42 @@ class AdminController extends Controller
 	public function deleteuser($id){
 		$user = $this->user->where('id',$id)->delete();
 		return redirect('/admin/list-user');
+	}
+	public function listdeposit(Request $request){
+		$this->data["deposit"] = $this->deposit->get();
+		return view('admin.list-deposits',$this->data);
+	}
+	public function savedeposit(Request $request){
+		
+	 if ($request->isMethod('post')){
+          
+		  if ($request->input("id") != 0) {
+            $deposit = Deposit::where("id", $request->input("id"))->first();
+        } else {
+            $deposit = new Deposit();
+        }
+		
+			$deposit->user_id = $request->input('user_id'); 
+			$deposit->coin_id = $request->input('coin_id');  
+			$deposit->qty = $request->input('qty'); 
+			$deposit->amount = $request->input('amount');
+            $deposit->deposit_address = $request->input('deposit_address'); 
+            $deposit->approved = $request->input('approved'); 			
+			$deposit->status = $request->input('status');
+            $deposit->save();
+			return redirect()->back()->with('message', 'Successfully profile is updated...');			
+		}else{
+			return view('admin.list-deposits',$this->data);
+		}		
+	}
+     public function viewdeposit($id)
+    {
+        $this->data["deposit"] = $this->deposit->where("id", $id)->first();
+        return view('admin.view-deposits',$this->data);
+    }
+	public function deletedeposit($id){
+		$deposit = $this->deposit->where('id',$id)->delete();
+		return redirect('/list-deposits');
 	}
 	 public function logout(){
 		

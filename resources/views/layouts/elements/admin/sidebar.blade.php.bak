@@ -34,7 +34,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url('admin/list-deposit') }}">
+              <a class="nav-link" href="{{ url('admin/list-user') }}">
                 <span class="menu-title">Deposit Details</span>
                 <i class="mdi mdi-account-details menu-icon mdi-24px float-right"></i>
               </a>
