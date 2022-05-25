@@ -1,4 +1,7 @@
 @include('layouts.elements.admin.header') 
+	<?php
+		use App\Models\User;use App\Models\Coin;
+	?>
     <div class="container-scroller">
       <!-- partial:../../partials/_navbar.html -->
       @include('layouts.elements.admin.nav') 
@@ -10,7 +13,7 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <h3 class="page-title"> List User </h3>
+              <h3 class="page-title"> List Deposit </h3>
               <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                 </ol>
@@ -46,9 +49,7 @@
 							<th>Coin Name</th>
 							<th>Qty</th>
 							<th>Amount</th>
-							<th>Deposit Address</th>
 							<th>Approved</th>
-							<th>Status</th>
                             <th> Edit </th>
 							<th> Delete </th>
                           </tr>
@@ -62,10 +63,10 @@
 									{{ $depositval->id }}
 								  </td>
 								  <td>
-									{{ $depositval->user_id  }}
+									{{ User::getusername($depositval->user_id)  }}
 								  </td>
 								  <td>
-									{{ $depositval->coin_id  }}
+									{{ Coin::getcoindetail($depositval->coin_id)  }}
 								  </td>
 								  <td>
 									{{ $depositval->qty  }}
@@ -74,16 +75,10 @@
 									{{ $depositval->amount  }}
 								  </td>
 								  <td>
-									{{ $depositval->deposit_address  }}
-								  </td>
-								  <td>
-									{{ $depositval->approved  }}
-								  </td>
-									  <td>
-									@if($depositval->status==1)
-										<label class="badge badge-success">Active</label>
-									@else($depositval->status == '0')
-										<label class="badge badge-danger">In-Active</label>
+									@if($depositval->approved==1)
+										<label class="badge badge-success">Approved</label>
+									@else
+										<label class="badge badge-danger">Pending</label>
 									@endif
 								  </td>
 								 <td>

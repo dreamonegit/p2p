@@ -1,18 +1,110 @@
 @extends('userlayouts.layouts.header_auth')
 @section('content')
+<style>
+.small-box {
+    border-radius: 0.25rem;
+    box-shadow: 0 0 1px rgb(0 0 0 / 13%), 0 1px 3px rgb(0 0 0 / 20%);
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+}
+.bg-info, .bg-info>a {
+    color: #fff!important;
+}
+.small-box>.inner {
+    padding: 10px;
+}
+.bg-info {
+    background-color: #17a2b8!important;
+}
+.bg-success {
+    background-color: #28a745!important;
+}
+.bg-danger {
+    background-color: #dc3545!important;
+}
+.small-box:hover {
+    text-decoration: none;
+}
+.bg-info, .bg-info>a {
+    color: #fff!important;
+}
+.bg-danger, .bg-danger>a {
+    color: #fff!important;
+}
+.bg-success, .bg-success>a {
+    color: #fff!important;
+}
+.small-box>.small-box-footer {
+    background-color: rgba(0,0,0,.1);
+    color: rgba(255,255,255,.8);
+    display: block;
+    padding: 3px 0;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    z-index: 10;
+}
+</style>
+	<?php use App\Models\Deposit; ?>
 <div class="clear"></div>
 <!--body-start--->
-<div class="homebanner2_outer">
    <div class="container">
-      <h2>Easy Buy / Sell</h2>
+   <div class="exc-1">
+      <div class="exc-title">Current Portfolio Value (Approx) 	<span>&#8377; {{ number_format(Deposit::getmyportpolio(),2) }} </span></div>
    </div>
-</div>
+   </div>
 <div class="clear"></div>
 <div class="container">
+	<div class="exc-1">
+<div class="row" style="margin-top: 12px;">
+            <div class="col-lg-4 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>{{ Deposit::getdepositrequest() }}</h3>
+                        <p>Total Deposit Request</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-archive"></i>
+                    </div>
+                    <a href="{{ url('/user/deposit-history') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-4 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>0</h3>
+                        <p>Total Swap Request</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-4 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>0</h3>
+                        <p>Total Withdraw Request</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <!-- ./col -->
+            
+        </div>	
+	</div>
    <!--portfolio-start--->
-   <div class="exc-1">
-      <div class="exc-title">Current Portfolio Value (Approx) 	<span>&#8377; {{ number_format($portpolio,2) }} </span></div>
-   </div>
+
    <!--portfolio-end--->
    <div class="exc-box-1">
       <!--portfolio-start
@@ -266,8 +358,7 @@
 						 </div>
 					  </td>
 					  <td>
-						 <div class="exc-border--3">{{ $coinval->total_volume }} {{ $coinval->symbol }}
-							<span>˜ &#8377; {{ number_format($coinval->total_amount,2) }}</span>
+						 <div class="exc-border--3">{{ Deposit::getcoincount($coinval->id) }} {{ $coinval->symbol }}
 						 </div>
 					  </td>
 					  <td>

@@ -4,7 +4,7 @@
 <!--body-start--->
 <div class="homebanner2_outer">
    <div class="container">
-      <h2>Deposit / Buy - Sell</h2>
+      <h2>Deposit</h2>
    </div>
 </div>
 <div class="clear"></div>
@@ -14,7 +14,7 @@
       <div class="excc-1">
          <div class="exc-ref-ou-1">
             <div class="exc-ref-ou-1-0"><a id="deposit">Deposit</a></div>
-            <div class="exc-ref-ou-1-1"><a id="swap">Buy / Sell / Swap</a></div>
+
          </div>
 		 <form id="exchange" method="post" action="{{ url('/user/deposit') }}">@csrf
 			<input type="hidden" name="existingcoin" value="{{ $id }}">

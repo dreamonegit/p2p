@@ -43,13 +43,13 @@ Route::post('/forgotpassword', [App\Http\Controllers\UserController::class, 'for
 
 Route::post('/userregistration', [App\Http\Controllers\UserController::class, 'signupuser']);
 
-Route::any('/exchange', [App\Http\Controllers\UserController::class, 'exchange']);
-
 Auth::routes();
 
 Route::group(['prefix' => 'user',  'middleware' => ['auth','user',ClearFormSession::class]], function(){
 	
 	Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index']);
+	
+	Route::any('/exchange', [App\Http\Controllers\UserController::class, 'exchange']);
 
 	Route::get('/account', [App\Http\Controllers\DashboardController::class, 'account']);	
 	
@@ -66,6 +66,9 @@ Route::group(['prefix' => 'user',  'middleware' => ['auth','user',ClearFormSessi
 	Route::get('/wallet', [App\Http\Controllers\UserController::class, 'wallet']);
 	
 	Route::any('/getcoinaddress', [App\Http\Controllers\UserController::class, 'getcoinaddress']);
+	
+	Route::post('/updatestatus', [App\Http\Controllers\UserController::class, 'updatestatus']);
+	
 	
 	Route::get('/logout', function () {
 	   Auth::logout();

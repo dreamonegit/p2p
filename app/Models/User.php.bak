@@ -62,7 +62,6 @@ class User extends Authenticatable
 	public static function getusername($id){
 		
 		$user = self::where('id',$id)->first();
-		
 		return $user->name;
 	}
 }
