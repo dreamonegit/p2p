@@ -71,6 +71,7 @@ class AdminController extends Controller
 		return view('admin.list-user',$this->data);
 	}
 	public function saveuser(Request $request){
+	echo print_r($request->all());exit;
 		if ($request->isMethod('post')){
          if ($request->input("id") != 0) {
             $user = User::where("id", $request->input("id"))->first();
@@ -84,7 +85,7 @@ class AdminController extends Controller
             $user->mobile = $request->input('mobile');
             $user->address = $request->input('address'); 
 			$user->address1	= $request->input('address1');
-			$user->name = $request->input('name');
+			$user->country = $request->input('country');
 			$user->state = $request->input('state'); 
 			$user->city = $request->input('city');
             $user->pin = $request->input('pin');
@@ -140,7 +141,7 @@ class AdminController extends Controller
     }
 	public function deletedeposit($id){
 		$deposit = $this->deposit->where('id',$id)->delete();
-		return redirect('/list-deposits');
+		return redirect('/admin/list-deposits');
 	}
 	 public function logout(){
 		

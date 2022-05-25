@@ -29,7 +29,7 @@
               <div class="col-md-12 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-					<form id="coin-form" action="{{ url('/admin/save-user') }}" method="POST" enctype="multipart/form-data">@csrf
+					<form id="coin-form" action="{{ url('/admin/save-user') }}" method="POST" id="datepicker" enctype="multipart/form-data">@csrf
 					@if(isset($user))
 					<input type="hidden" name="id" value="{{$user->id}}">
 					@else
@@ -46,7 +46,7 @@
 							</div>
 							<div class="form-group col-md-4">
 							  <label class="required">Date Of Birth</label>
-							  <input type="text" class="form-control form-control-lg date_datepicker" placeholder="Date of Birth" name="bkdate" aria-label="Bkdate" value="@if(isset($user)){{ $user->bkdate }} @endif">
+							  <input type="text" class="form-control form-control-lg" placeholder="Date of Birth" name="bkdate" aria-label="Bkdate" value="@if(isset($user)){{ $user->bkdate }} @endif">
 							</div>
 						</div>
 						<div class="row">
@@ -70,10 +70,10 @@
 							</div>
     						 <div class="form-group col-md-4">
         						<label class="required">Country</label>
-        			           <select class="form-control form-control-lg" id="countries" name="name">
+        			           <select class="form-control form-control-lg" id="countries" name="country">
         				        <option value="">---Choose the Country ---</option>
 								 @foreach($countries as $countriesvalue)
-								   <option value="{{ $countriesvalue->countries}}" @if(isset($user))@if($user->countries==$countriesvalue->countries) {{ "selected" }} @endif @endif>{{ $countriesvalue->nicename }} </option>
+								   <option value="{{ $countriesvalue->id}}" @if(isset($user))@if($user->country==$countriesvalue->id) {{ "selected" }} @endif @endif>{{ $countriesvalue->nicename }} </option>
 								    @endforeach
         						  </select>
     						</div>
@@ -136,9 +136,8 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
 	@include('layouts.elements.admin.plugins')
-	<script>
-$( function() {
-	$( ".date_datepicker" ).datepicker();
-    
-	} );
-	</script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
