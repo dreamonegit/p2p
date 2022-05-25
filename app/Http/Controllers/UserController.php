@@ -85,7 +85,7 @@ class UserController extends Controller
 				$loginhistory->created_at = date('Y-m-d H:i:s');
 				$loginhistory->save();
 				//redirect to dashboard
-				return redirect('/user/dashboard');	
+				return redirect('/user/exchange');	
 			}else{
 				return redirect()->back()->with('failure', 'Invalid Credentials'); 	
 			}				
@@ -150,7 +150,7 @@ class UserController extends Controller
 		return view('user.wallet',$this->data);	
 	}
 	public function deposithistory(Request $request){
-		$this->data['deposithistory'] = Deposit::where('user_id',auth::user()->id)->where('approved',0)->get();
+		$this->data['deposithistory'] = Deposit::where('user_id',auth::user()->id)->get();
 		return view('user.depositstatus',$this->data);			
 	}
 	public function deposit(Request $request){
@@ -172,11 +172,12 @@ class UserController extends Controller
 			$deposit->amount = $request->input('qty') * $coin->price ; 
 			$deposit->user_id = auth::user()->id; 
 			$deposit->coin_id = $request->input('coin_id'); 
+			$deposit->type = 'Deposit';
 			$deposit->deposit_address = $request->input('deposit_address'); 
 			$deposit->created_at = date('Y-m-d H:i:s');
 			$deposit->updated_at = date('Y-m-d H:i:s');
 			$deposit->save();
-			return redirect('/user/dashboard')->with('message','Sucessfully deposit...'); 
+			return redirect('/user/exchange')->with('message','Sucessfully deposit...'); 
 		}else{
 			$this->data['id'] = $request->id;
 			$this->data['coin'] = Coin::where('status',1)->get();
@@ -192,6 +193,15 @@ class UserController extends Controller
 			'total_volume' => $coinaddress->total_volume,
 			'coinamount' => $coinaddress->price
 		), 200);
+	}
+	public function updatestatus(Request $request){
+		if($request->input('hid')){
+			$deposit = Deposit::where('id',$request->input('hid'))->first();
+			$deposit->transaction_id = $request->input('transaction_id');
+			$deposit->save();
+			return redirect('/user/deposit-history')->with('message','Sucessfully updated...'); 
+		}
+		
 	}
 	public function privacypolicy(){
 		

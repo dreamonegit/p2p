@@ -3,19 +3,21 @@
    <head>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Welcome to BIT2ATM</title>
-      <link href="{{ asset('user/css/bootstrap.css')}}" type="text/css" rel="stylesheet" />
-      <script src="{{ asset('user/js/jquery-1.11.0.min.js')}}"></script>
-      <!---menu link-->
-      <link rel="stylesheet" href="{{ asset('user/menu/styles.css')}}">
-      <script src="{{ asset('user/menu/script.js')}}"></script>
-      <!---menu link-->
-      <!--home silder-->
-      <link href="{{ asset('user/acheiver-slider/owl.carousel.css')}}" rel="stylesheet">
-      <script src="{{ asset('user/acheiver-slider/owl.carousel.js')}}"></script>
-	  <script  src="{{ asset('user/pop-sel/script.js') }}"></script>
-      <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-      <link rel="stylesheet" href="/resources/demos/style.css">
-      <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+		<link href="{{ asset('user/css/bootstrap.css')}}" type="text/css" rel="stylesheet" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script src="{{ asset('user/js/jquery-1.11.0.min.js')}}"></script>
+		<!---menu link-->
+		<link rel="stylesheet" href="{{ asset('user/menu/styles.css')}}">
+		<script src="{{ asset('user/menu/script.js')}}"></script>
+		<!---menu link-->
+		<!--home silder-->
+		<link href="{{ asset('user/acheiver-slider/owl.carousel.css')}}" rel="stylesheet">
+		<script src="{{ asset('user/acheiver-slider/owl.carousel.js')}}"></script>
+		<script  src="{{ asset('user/pop-sel/script.js') }}"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="/resources/demos/style.css">
+		<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
       <script>
          $(document).ready(function() {
          
@@ -60,8 +62,7 @@
                <div class="menu-out">
                   <div id='cssmenu'>
                      <ul>
-                        <li class="first  "><a href='{{ url("/user/dashboard") }}'>Dashboard</a></li>
-						<li  class=" "><a href="{{ url('/exchange') }}">Exchange </a></li>
+                        <li class="first  "><a href='{{ url("/exchange") }}'>Dashboard</a></li>
                         <li  class=" "><a href="#">Security</a></li>
                         <li  class=" "><a href="#">Identification</a></li>
                         <li  class=" "><a href="#">Payment</a></li>

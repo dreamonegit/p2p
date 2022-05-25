@@ -47,13 +47,10 @@
 						 <div class="excc-border-1">#</div>
 					  </th>
 					  <th colspan="">
-						 <div class="excc-border-1">Coin</div>
+						 <div class="excc-border-1">Coin <img src="{{ asset('user/images/Layer 694.png') }}" /></div>
 					  </th>
 					  <th colspan="">
-						 <div class="excc-border-1">Qty <img src="{{ asset('user/images/Layer 694.png') }}" /></div>
-					  </th>
-					  <th colspan="">
-						 <div class="excc-border-1">Amount <img src="{{ asset('user/images/Layer 694.png') }}" /></div>
+						 <div class="excc-border-1">Balance <img src="{{ asset('user/images/Layer 694.png') }}" /></div>
 					  </th>
 					  <th colspan="">
 						 <div class="excc-border-1">Action</div>
@@ -65,6 +62,14 @@
 							$coinimage = Coin::getcoinimage($walletval->coin_id);
 							
 							$coindetail = Coin::getcoinname($walletval->coin_id);
+							
+							$need_deposite = Coin::getneeddeposit($walletval->coin_id);
+							
+							if($need_deposite==0){
+								$need_deposite = '<a href="javascript:void(0)"> <div class="exxc-acc-ou-1-1" style="background-color:gray">Deposit</div></a>';
+							}else{
+								$need_deposite = '<a href="'.url('/user/deposit/'.$walletval->id).'"> <div class="exxc-acc-ou-1-1 deposit">Deposit</div></a>';
+							}
 						?>
 					   <tr>
 						  <td>
@@ -84,12 +89,21 @@
 							 </div>
 						  </td>
 						  <td>
-							 <div class="exc-border--3">{{ $walletval->amount }}
-								
+							 <div class="exc-border--4">
+									@if(auth::user())
+										<?php echo $need_deposite ?>
+										<a href="#">
+										   <div class="exxc-acc-ou-2-2 withdraw">Withdraw</div>
+										</a>
+									@else
+										<a href="#">
+										   <div class="exxc-acc-ou-1-1 deposit">Deposit</div>
+										</a>
+										<a href="#">
+										   <div class="exxc-acc-ou-2-2 withdraw">Withdraw</div>
+										</a>						
+									@endif
 							 </div>
-						  </td>
-						  <td>
-							<div class="exc-border--3"><button type="button" class="btn btn-primary btn-sm">Small</button></div>
 						  </td>
 					   </tr>
 					   <?php $s++; ?>
