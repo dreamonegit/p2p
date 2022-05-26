@@ -266,4 +266,8 @@ class UserController extends Controller
 			return view('/user/bank-details');
 		}
 	}
+	public function aboutus(){
+		
+      return view('user.aboutus');
+	}
 }

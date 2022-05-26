@@ -251,8 +251,8 @@ class UserController extends Controller
 			}				
 	}
 	public function bankdetails(Request $request){
-		if($request->input('hid')){
-			$deposit = Deposit::where('id',$request->input('hid'))->first();
+		if($request->post()){
+			$bankdetails = new Bankdetails;
 			$bankdetails->user_id = auth::user()->id; 
 			$bankdetails->holder_name = $request->input('holder_name');	
 			$bankdetails->account_no = $request->input('account_no');
