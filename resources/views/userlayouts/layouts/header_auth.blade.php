@@ -67,6 +67,7 @@
                         <li  class=" "><a href="#">Identification</a></li>
                         <li  class=" "><a href="#">Payment</a></li>
                         <li  class=" "><a href="#">Referral</a></li>
+						<li  class=" "><a href='{{ url("/user/bank_details") }}'>Bank Details</a></li>
                         <li  class="last active"><a href="#">Settings</a></li>
                      </ul>
                   </div>

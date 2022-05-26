@@ -69,6 +69,10 @@ Route::group(['prefix' => 'user',  'middleware' => ['auth','user',ClearFormSessi
 	
 	Route::post('/updatestatus', [App\Http\Controllers\UserController::class, 'updatestatus']);
 	
+	//Route::get('/bank_details', [App\Http\Controllers\UserController::class, 'bankdetails']);
+	
+	Route::post('/bank_details', [App\Http\Controllers\UserController::class, 'bankdetails']);
+	
 	
 	Route::get('/logout', function () {
 	   Auth::logout();
@@ -87,7 +91,7 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin',ClearFormSes
 	Route::get('/list-deposit', [App\Http\Controllers\AdminController::class, 'listdeposit'])->middleware('admin');
 	Route::post('/save-deposit', [App\Http\Controllers\AdminController::class, 'savedeposit'])->middleware('admin');
 	Route::get('/view-deposit/{id}', [App\Http\Controllers\AdminController::class, 'viewdeposit'])->middleware('admin');
-	Route::get('/delete-deposit/{id}', [App\Http\Controllers\AdminController 'deletedeposit'])->middleware('admin');
+	Route::get('/delete-deposit/{id}', [App\Http\Controllers\AdminController::class, 'deletedeposit'])->middleware('admin');
 	Route::any('/myprofile', [App\Http\Controllers\AdminController::class, 'myprofile'])->middleware('admin');
 	Route::get('/listcoin', [App\Http\Controllers\CoinController::class, 'index'])->middleware('admin');
 	Route::get('/edit-coin/{id}', [App\Http\Controllers\CoinController::class, 'savecoin'])->middleware('admin');

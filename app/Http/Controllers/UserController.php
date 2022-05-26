@@ -10,6 +10,7 @@ use DB;
 use App\Models\User;
 use App\Models\Deposit;
 use App\Models\Coin;
+use App\Models\Bankdetails;
 use Carbon\Carbon;
 use Session;
 use Maatwebsite\Excel\Facades\Excel;
@@ -24,6 +25,7 @@ class UserController extends Controller
     public function __construct()
     {
 		$this->user = new User();
+		$this->bankdetails = new Bankdetails();
     }
 	
 	public function signupuser(Request $request){
@@ -247,5 +249,21 @@ class UserController extends Controller
 					), 200);
 				}				
 			}				
+	}
+	public function bankdetails(Request $request){
+		if($request->post()){
+			$bankdetails = new Bankdetails;
+			$bankdetails->user_id = auth::user()->id; 
+			$bankdetails->holder_name = $request->input('holder_name');	
+			$bankdetails->account_no = $request->input('account_no');
+			$bankdetails->confirm_account_no = $request->input('confirm_account_no');
+			$bankdetails->ifsc_code = $request->input('ifsc_code');
+			$bankdetails->account_type = $request->input('account_type');
+			$bankdetails->bank_name = $request->input('bank_name');
+			$bankdetails->save();
+			return Redirect::back()->withErrors(['msg' => 'Successfully send your contact details..']);
+		}else{
+			return view('/user/bank-details');
+		}
 	}
 }

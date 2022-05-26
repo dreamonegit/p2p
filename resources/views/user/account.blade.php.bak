@@ -4,7 +4,7 @@
 <!--body-start--->
 <div class="header-out-1">
    <div class="container">
-      <div class="col-md-6">
+      <div class="col-md-12">
          <div class="acc-ou-1">
             <a href="{{ url('/user/account') }}">
                <div class="acc-ou-1-1">Account</div>
@@ -45,11 +45,11 @@
             <div class="col-md-4">
                <div class="package-title-sub">
                   <span>
-                     <!--<img src="images/logo-btrn.png" />-->
+                     <img src="images/logo-btrn.png"/>
                   </span>
-                  <div class="acc-ou-4">
+                  <div class="acc-ou-5">
                      <p>Name</p>
-                     <div class="acc-ou-4-4"> <img style="padding-top: 2px; float: left; padding-right: 10px;" src="images/Layer 25.png" /> @if(isset(auth::user()->name)) {{ auth::user()->name }} @endif</div>
+                     <div class="acc-ou-5-5"> <img style="padding-top: 2px; float: left; padding-right: 10px;" src="images/Layer 25.png" /> @if(isset(auth::user()->name)) {{ auth::user()->name }} @endif</div>
                   </div>
                </div>
             </div>
