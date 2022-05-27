@@ -90,6 +90,7 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin',ClearFormSes
 	Route::post('/state', [App\Http\Controllers\AdminController::class, 'state'])->middleware('admin');
 	Route::get('/logout', [App\Http\Controllers\AdminController::class, 'logout'])->middleware('admin');
 	Route::get('/list-user', [App\Http\Controllers\AdminController::class, 'listuser'])->middleware('admin');
+	Route::post('/updatekycstatus', [App\Http\Controllers\AdminController::class, 'updatekycstatus'])->middleware('admin');
 	Route::post('/save-user', [App\Http\Controllers\AdminController::class, 'saveuser'])->middleware('admin');
 	Route::get('/view-user/{id}', [App\Http\Controllers\AdminController::class, 'viewuser'])->middleware('admin');
 	Route::get('/delete-user/{id}', [App\Http\Controllers\AdminController::class, 'deleteuser'])->middleware('admin');

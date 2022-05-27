@@ -135,7 +135,7 @@ class AdminController extends Controller
 			$deposit = User::where('id',$request->input('hid'))->first();
 			$deposit->is_verified = $request->input('is_verified');
 			$deposit->save();
-			return redirect('/admin/list-user')->with('message','Sucessfully updated...'); 
+			return redirect('/user/deposit-history')->with('message','Sucessfully updated...'); 
 		}
 	}
 	 public function logout(){

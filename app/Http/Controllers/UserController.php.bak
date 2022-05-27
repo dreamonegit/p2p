@@ -204,7 +204,16 @@ class UserController extends Controller
 			$deposit->save();
 			return redirect('/user/deposit-history')->with('message','Sucessfully updated...'); 
 		}
-	}	
+	}
+	public function updatekycstatus(Request $request){
+		if($request->input('hid')){
+			$deposit = User::where('id',$request->input('hid'))->first();
+			$deposit->is_verified = $request->input('is_verified');
+			$deposit->save();
+			return redirect('/user/deposit-history')->with('message','Sucessfully updated...'); 
+		}
+	}
+	
 	public function referrals(Request $request){
 		if ($request->isMethod('post')){
 
