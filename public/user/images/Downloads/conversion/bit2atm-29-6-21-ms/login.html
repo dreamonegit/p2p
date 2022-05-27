@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to BIT2ATM</title>
+
+
+
+<link href="css/bootstrap.css" type="text/css" rel="stylesheet" />
+<script src="js/jquery-1.11.0.min.js"></script>
+
+
+ <!---menu link-->
+
+   <link rel="stylesheet" href="menu/styles.css">
+   <script src="menu/script.js"></script>
+ <!---menu link-->
+    
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/responsive.css" />
+
+
+</head>
+
+<body class="signupbg">
+
+
+
+<div style="    padding-bottom: 30px;
+
+    float: left;
+
+    width: 100%;" >
+
+
+<div class="adminlogin_outer">
+
+<div class="adminlogin_inner">
+
+<div class="admminlogo_outer">
+<a href="index.html"><img class="signupbglo" src="images/logo.png" ></a>
+</div>
+
+
+<h5 class="admin_head">Use your "Bit2atm" Account</h5>
+
+<div class="adminlogin_form">
+<form action="" method="post" name="l1" id="l1" autocomplete="off">
+
+
+
+
+
+<div class="admin_box">
+
+<div class="input_login emaillog">
+
+<input name="email" id="email" value="" placeholder="Email Id" class="user_box" tabindex="1" required autocomplete="off" type="text">
+
+</div>
+
+</div>
+
+
+
+<div class="admin_box">
+
+<div class="input_login passlog">
+
+<input name="pass" id="pass" value=""  placeholder="Enter your password." class="user_box user_box1" tabindex="1" required type="password">
+
+<i  toggle="#pass" class="toggle-password"><img class="eyechmg" src="images/eye.png" /></i>
+
+</div>
+
+</div>
+
+
+
+
+<script language="javascript">
+	  $(".toggle-password").click(function() {
+
+  var input = $($(this).attr("toggle"));
+  if (input.attr("type") == "password") {
+    input.attr("type", "text");
+    $('.eyechmg').prop('src', 'images/eye1.png');
+  } else {
+    input.attr("type", "password");
+    $('.eyechmg').prop('src', 'images/eye.png');
+  }
+});
+
+</script> 
+
+
+<div class="google_capca">
+<img src="images/google-cap.jpg" />
+</div>
+
+
+<div class="admin_box" style="margin-bottom:0px;">
+
+<input type="submit" name="login" value="Login" class="login_but">
+
+</div>
+
+
+
+
+<div class="clearfix"></div>
+
+<div class="socite"><a href="#">Forgot Password ?</a></div>
+
+<div class="clearfix"></div>
+
+<h5 class="alry">Not on Bit2atm yet? <a class="for_pass" href="sign-up.html">Sign up</a></h5>
+
+
+
+
+
+
+</form>
+</div>
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+<script>
+
+    $(function() {
+
+  var d = new Date();
+
+  var n = d.getFullYear();
+
+  document.getElementById("ayear").innerHTML = n;
+
+
+
+});
+
+    
+
+</script>
+
+
+
+<div class="signfoot">Copyright &copy <span id="ayear">2021</span> <a href='#'>Bit2atm</a>. All rights reserved.</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+</body>
+
+</html>

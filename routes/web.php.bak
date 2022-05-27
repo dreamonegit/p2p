@@ -71,7 +71,15 @@ Route::group(['prefix' => 'user',  'middleware' => ['auth','user',ClearFormSessi
 	
 	Route::post('/updatestatus', [App\Http\Controllers\UserController::class, 'updatestatus']);
 	
+<<<<<<< HEAD
 	Route::get('/referrals', [App\Http\Controllers\UserController::class, 'referrals']);
+=======
+	Route::get('/bank_details', [App\Http\Controllers\UserController::class, 'bankdetails']);
+	
+	Route::post('/bank_details', [App\Http\Controllers\UserController::class, 'bankdetails']);
+	
+	Route::get('/aboutus', [App\Http\Controllers\UserController::class, 'aboutus']);
+>>>>>>> 40a4cfd68e6b66b1b17815f71fd1118193717bd6
 	
 	
 	Route::get('/logout', function () {

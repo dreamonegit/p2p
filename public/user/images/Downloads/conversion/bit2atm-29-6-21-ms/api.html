@@ -1,0 +1,1168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to BIT2ATM</title>
+
+
+
+<link href="css/bootstrap.css" type="text/css" rel="stylesheet" />
+<script src="js/jquery-1.11.0.min.js"></script>
+
+
+ <!---menu link-->
+
+   <link rel="stylesheet" href="menu/styles.css">
+   <script src="menu/script.js"></script>
+ <!---menu link-->
+     
+  <!--home silder-->
+    <link href="acheiver-slider/owl.carousel.css" rel="stylesheet">
+    <script src="acheiver-slider/owl.carousel.js"></script>
+    <script>
+    $(document).ready(function() {
+
+	  
+  	$("#hometestslider").owlCarousel({
+        navigation :true,
+        autoHeight : true,
+        autoPlay : true,
+		pagination: false,
+        items :4,
+        itemsDesktop : [1199,3],
+        itemsDesktopSmall : [979, 2],
+        itemsTablet : [768, 2],
+        itemsTabletSmall : false,
+        itemsMobile : [480, 1]
+      });
+	  
+  		  
+    });
+	
+
+
+    </script>
+
+
+		<script type="text/javascript" src="hosting_tab/jquery.accordion.js"></script>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/responsive.css" />
+
+
+</head>
+
+<body style="background:#fafafa;">
+
+
+<!--header-start--->
+<div class="header-out">
+<div class="container container-1400">
+
+
+<div class="col-md-2">
+<a href="index.html">
+<div class="head-logo">
+<img src="images/logo.png" />
+</div>
+</a>
+</div>
+
+<!--menu-->
+<div class="col-md-7">
+<div class="menu-out">
+ <div id='cssmenu'>
+<ul>
+        <li  class="first "><a href="#">Trade </a></li>
+        <li  class=" "><a href="exchange.html">Exchange </a></li>
+        <li  class="active "><a href="api.html">API </a></li>
+        
+        
+                                  
+</ul>
+</div>
+</div>
+</div>
+<!--menu-->
+
+
+
+
+
+<div class="col-md-3">
+<div class="head-icons">
+
+<div class="soci-out">
+
+<div class="mail_id_img2 hvr-grow-rotate">
+<a href="login.html" ><div class="acc-ou-2-2">Login</div></a>
+</div>
+
+<div class="mail_id_img2 hvr-grow-rotate">
+<a href="sign-up.html"><div class="acc-ou-1-1">Register</div></a>
+</div>
+
+
+
+</div>
+
+
+</div>
+</div>
+
+
+
+
+
+
+</div>
+</div>
+<!--header-end--->
+<div class="clear"></div>
+
+
+<div class="clear"></div>
+
+<div class="container">
+
+
+
+<div class="apicont_outer">
+
+<div class="apipage_cont">
+<h3 class="apihad1">Bit2atm Market<span><br /></span>
+REST API Documentation</h3>
+<p>Welcome to the Bit2atm Market REST API documentation. This API 
+(Application Programming Interface) will allow you to access the 
+functionality of this exchange by means of HTTP requests, making 
+integration with your own applications possible.</p>
+
+<h3 class="apihad1 apihad2" >Connecting to the API</h3>
+<p>You can access the API at the following url:<span><br /></span>
+<a href="https://www.bit2atm.com/api" target="_blank">https://www.bit2atm.com/api</a><span><br /></span>
+You are permited to make up to 20 requests a minute.
+v</p>
+
+</div>
+<div class="apipage_img"><img src="images/api-img.png" /></div>
+
+
+</div>
+
+
+<div class="clear"></div>
+
+
+
+<div class="apicont_outer"  style="text-align:center; border:0px;">
+<h3 class="apihad1"  style=" margin-top:0px;">Usage</h3>
+<div class="clear"></div>
+<p class="paippg2">In order to use a public API method, you must make an HTTP request to the appropriate endpoint for that particular method,
+sending the appropriate GET or POST parameters for that method. You can also send them in the PAYLOAD of the request in JSON format.</p>
+<div class="clear"></div>
+
+<p class="paippg2" style=" margin-top:20px" ><b style="font-weight:600;;">Here are a few basic usage examples:</b></p>
+</div>
+
+
+
+<div class="clear"></div>
+
+
+
+<div class="apicont_outer" >
+<p class="paippg2"># Example request using CURL on the command line</p>
+<p class="paippg3">curl "https://www.bit2atm.com/api/getMarketHistory/BTC_INR" </p>
+<div class="clear"></div>
+
+</div>
+
+
+<div class="clear"></div>
+
+
+
+<div class="apicont_outer" >
+<p class="paippg2">// Example valid response </p>
+<div class="clear"></div>
+<pre class="prebg1">
+{
+	 "status": "1",
+	"result": {
+		"pair": "BTC_INR",
+                  "transaction_history": [
+			{
+				"datetime": "2019-05-20 09:13:27",,
+                                    "type": "increase",
+                                    "price": "0.41",
+                                    "amount": "1",
+                                    "from_cur": "BTC",
+                                    "to_cur": "INR",
+                                    "sell_fee": 0.000123,
+                                    "buy_fee": 0.02,
+                                    "sellordertype": "limit",
+                                    "buyordertype": "market"
+			},
+		   }
+          }
+
+</pre>
+<div class="clear"></div>
+
+</div>
+
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+<div class="apicont_outer" >
+<p class="paippg2">// Example error response </p>
+<div class="clear"></div>
+<pre class="prebg1">
+ 	{"errors":[{"status":"0","message":"invalid pairs"}]}
+</pre>
+<div class="clear"></div>
+
+</div>
+
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+
+
+
+<!--portfolio-start--->
+<div class="exc-1 apitabouter">
+
+<h3 class="apitabhaa">Private API Methods</h3>
+<p class="apitabpg">These methods cannot be accessed without an account or API key and secret key, Needed parameters(api_key,api_secret).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--outer_palns start-->
+
+<div class="outer_palns">
+
+			<div class="example1">
+
+            
+
+            
+<!--1-->
+				<div class="panel panel-primary">
+
+				  <div class="panel-heading act" data-acc-link="demo1"><span>Make Orders</span></div>
+
+				  <div class="panel-body acc-open" data-acc-content="demo1">
+
+				    <p class="paippg2">This endpoint returns a list of existing exchange open buy order books. </p>
+
+<div class="clear"></div>
+
+                    <p class="paippg2 postcod_out">POST https://www.bit2atm.com/api/openBuyorders</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Parameters:</h3>
+
+<div class="clear"></div> 
+				    <p class="paippg2" style="margin-top:0px; padding-left:10px; ">pair (string) BTC_INR.</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Response:</h3>
+
+<div class="clear"></div>
+                    <pre class="prf_pg1">
+{
+    "status": "1",
+    "openOrders": [
+        {
+            "amount": "1",
+            "type": "buy",
+            "price": "0.42",
+            "total": "0.42",
+            "from_cur": "BTC",
+            "to_cur": "INR"
+        }
+    ]
+}
+          			</pre>
+
+				  </div>
+
+				</div>
+<!--1-->
+
+<!--1-->
+				<div class="panel panel-primary">
+
+				  <div class="panel-heading" data-acc-link="demo2"><span >Open Buy Orders</span></div>
+
+				  <div class="panel-body" data-acc-content="demo2">
+
+				     <p class="paippg2">This endpoint returns a list of existing exchange open buy order books. </p>
+
+<div class="clear"></div>
+
+                    <p class="paippg2 postcod_out">POST https://www.bit2atm.com/api/openBuyorders</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Parameters:</h3>
+
+<div class="clear"></div> 
+				    <p class="paippg2" style="margin-top:0px; padding-left:10px; ">pair (string) BTC_INR.</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Response:</h3>
+
+<div class="clear"></div>
+                    <pre class="prf_pg1">
+{
+    "status": "1",
+    "openOrders": [
+        {
+            "amount": "1",
+            "type": "buy",
+            "price": "0.42",
+            "total": "0.42",
+            "from_cur": "BTC",
+            "to_cur": "INR"
+        }
+    ]
+}
+          			</pre>
+                    
+
+                    
+
+				  </div>
+
+				</div>
+<!--1-->
+
+
+
+
+
+<!--1-->
+				<div class="panel panel-primary">
+
+				  <div class="panel-heading" data-acc-link="demo3"><span >Open Sell Orders</span></div>
+
+				  <div class="panel-body" data-acc-content="demo3">
+
+				     <p class="paippg2">This endpoint returns a list of existing exchange open buy order books. </p>
+
+<div class="clear"></div>
+
+                    <p class="paippg2 postcod_out">POST https://www.bit2atm.com/api/openBuyorders</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Parameters:</h3>
+
+<div class="clear"></div> 
+				    <p class="paippg2" style="margin-top:0px; padding-left:10px; ">pair (string) BTC_INR.</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Response:</h3>
+
+<div class="clear"></div>
+                    <pre class="prf_pg1">
+{
+    "status": "1",
+    "openOrders": [
+        {
+            "amount": "1",
+            "type": "buy",
+            "price": "0.42",
+            "total": "0.42",
+            "from_cur": "BTC",
+            "to_cur": "INR"
+        }
+    ]
+}
+          			</pre>
+                    
+
+                    
+
+				  </div>
+
+				</div>
+<!--1-->
+
+<!--1-->
+				<div class="panel panel-primary">
+
+				  <div class="panel-heading" data-acc-link="demo4"><span >Account Balance</span></div>
+
+				  <div class="panel-body" data-acc-content="demo4">
+
+				     <p class="paippg2">This endpoint returns a list of existing exchange open buy order books. </p>
+
+<div class="clear"></div>
+
+                    <p class="paippg2 postcod_out">POST https://www.bit2atm.com/api/openBuyorders</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Parameters:</h3>
+
+<div class="clear"></div> 
+				    <p class="paippg2" style="margin-top:0px; padding-left:10px; ">pair (string) BTC_INR.</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Response:</h3>
+
+<div class="clear"></div>
+                    <pre class="prf_pg1">
+{
+    "status": "1",
+    "openOrders": [
+        {
+            "amount": "1",
+            "type": "buy",
+            "price": "0.42",
+            "total": "0.42",
+            "from_cur": "BTC",
+            "to_cur": "INR"
+        }
+    ]
+}
+          			</pre>
+                    
+
+                    
+
+				  </div>
+
+				</div>
+<!--1-->
+
+<!--1-->
+				<div class="panel panel-primary">
+
+				  <div class="panel-heading" data-acc-link="demo5"><span >Currency Balance</span></div>
+
+				  <div class="panel-body" data-acc-content="demo5">
+
+				     <p class="paippg2">This endpoint returns a list of existing exchange open buy order books. </p>
+
+<div class="clear"></div>
+
+                    <p class="paippg2 postcod_out">POST https://www.bit2atm.com/api/openBuyorders</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Parameters:</h3>
+
+<div class="clear"></div> 
+				    <p class="paippg2" style="margin-top:0px; padding-left:10px; ">pair (string) BTC_INR.</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Response:</h3>
+
+<div class="clear"></div>
+                    <pre class="prf_pg1">
+{
+    "status": "1",
+    "openOrders": [
+        {
+            "amount": "1",
+            "type": "buy",
+            "price": "0.42",
+            "total": "0.42",
+            "from_cur": "BTC",
+            "to_cur": "INR"
+        }
+    ]
+}
+          			</pre>
+                    
+
+                    
+
+				  </div>
+
+				</div>
+<!--1-->
+
+<!--1-->
+				<div class="panel panel-primary">
+
+				  <div class="panel-heading" data-acc-link="demo6"><span >Filled Orders</span></div>
+
+				  <div class="panel-body" data-acc-content="demo6">
+
+				     <p class="paippg2">This endpoint returns a list of existing exchange open buy order books. </p>
+
+<div class="clear"></div>
+
+                    <p class="paippg2 postcod_out">POST https://www.bit2atm.com/api/openBuyorders</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Parameters:</h3>
+
+<div class="clear"></div> 
+				    <p class="paippg2" style="margin-top:0px; padding-left:10px; ">pair (string) BTC_INR.</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Response:</h3>
+
+<div class="clear"></div>
+                    <pre class="prf_pg1">
+{
+    "status": "1",
+    "openOrders": [
+        {
+            "amount": "1",
+            "type": "buy",
+            "price": "0.42",
+            "total": "0.42",
+            "from_cur": "BTC",
+            "to_cur": "INR"
+        }
+    ]
+}
+          			</pre>
+                    
+
+                    
+
+				  </div>
+
+				</div>
+<!--1-->
+
+<!--1-->
+				<div class="panel panel-primary">
+
+				  <div class="panel-heading" data-acc-link="demo7"><span >Deposit History</span></div>
+
+				  <div class="panel-body" data-acc-content="demo7">
+
+				     <p class="paippg2">This endpoint returns a list of existing exchange open buy order books. </p>
+
+<div class="clear"></div>
+
+                    <p class="paippg2 postcod_out">POST https://www.bit2atm.com/api/openBuyorders</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Parameters:</h3>
+
+<div class="clear"></div> 
+				    <p class="paippg2" style="margin-top:0px; padding-left:10px; ">pair (string) BTC_INR.</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Response:</h3>
+
+<div class="clear"></div>
+                    <pre class="prf_pg1">
+{
+    "status": "1",
+    "openOrders": [
+        {
+            "amount": "1",
+            "type": "buy",
+            "price": "0.42",
+            "total": "0.42",
+            "from_cur": "BTC",
+            "to_cur": "INR"
+        }
+    ]
+}
+          			</pre>
+                    
+
+                    
+
+				  </div>
+
+				</div>
+<!--1-->
+
+<!--1-->
+				<div class="panel panel-primary">
+
+				  <div class="panel-heading" data-acc-link="demo8"><span >Withdraw History</span></div>
+
+				  <div class="panel-body" data-acc-content="demo8">
+
+				     <p class="paippg2">This endpoint returns a list of existing exchange open buy order books. </p>
+
+<div class="clear"></div>
+
+                    <p class="paippg2 postcod_out">POST https://www.bit2atm.com/api/openBuyorders</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Parameters:</h3>
+
+<div class="clear"></div> 
+				    <p class="paippg2" style="margin-top:0px; padding-left:10px; ">pair (string) BTC_INR.</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Response:</h3>
+
+<div class="clear"></div>
+                    <pre class="prf_pg1">
+{
+    "status": "1",
+    "openOrders": [
+        {
+            "amount": "1",
+            "type": "buy",
+            "price": "0.42",
+            "total": "0.42",
+            "from_cur": "BTC",
+            "to_cur": "INR"
+        }
+    ]
+}
+          			</pre>
+                    
+
+                    
+
+				  </div>
+
+				</div>
+<!--1-->
+
+<!--1-->
+				<div class="panel panel-primary">
+
+				  <div class="panel-heading" data-acc-link="demo9"><span >Cancel Order</span></div>
+
+				  <div class="panel-body" data-acc-content="demo9">
+
+				     <p class="paippg2">This endpoint returns a list of existing exchange open buy order books. </p>
+
+<div class="clear"></div>
+
+                    <p class="paippg2 postcod_out">POST https://www.bit2atm.com/api/openBuyorders</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Parameters:</h3>
+
+<div class="clear"></div> 
+				    <p class="paippg2" style="margin-top:0px; padding-left:10px; ">pair (string) BTC_INR.</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Response:</h3>
+
+<div class="clear"></div>
+                    <pre class="prf_pg1">
+{
+    "status": "1",
+    "openOrders": [
+        {
+            "amount": "1",
+            "type": "buy",
+            "price": "0.42",
+            "total": "0.42",
+            "from_cur": "BTC",
+            "to_cur": "INR"
+        }
+    ]
+}
+          			</pre>
+                    
+
+                    
+
+				  </div>
+
+				</div>
+<!--1-->
+
+
+
+
+
+
+
+
+
+
+			</div>
+
+            
+
+
+
+
+</div>
+
+<!--outer_palns close-->
+
+
+
+
+
+
+
+
+
+
+
+
+<!--portfolio-start--->
+<div class="exc-1 apitabouter">
+
+<h3 class="apitabhaa">Public API Methods</h3>
+<p class="apitabpg">These methods can be accessed without an account or API key.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--outer_palns start-->
+
+<div class="outer_palns">
+
+			<div class="example1">
+
+            
+
+            
+<!--1-->
+				<div class="panel panel-primary">
+
+				  <div class="panel-heading" data-acc-link="demo10"><span>Return Ticker</span></div>
+
+				  <div class="panel-body" data-acc-content="demo10">
+
+				    <p class="paippg2">This endpoint returns a list of existing exchange open buy order books. </p>
+
+<div class="clear"></div>
+
+                    <p class="paippg2 postcod_out">POST https://www.bit2atm.com/api/openBuyorders</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Parameters:</h3>
+
+<div class="clear"></div> 
+				    <p class="paippg2" style="margin-top:0px; padding-left:10px; ">pair (string) BTC_INR.</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Response:</h3>
+
+<div class="clear"></div>
+                    <pre class="prf_pg1">
+{
+    "status": "1",
+    "openOrders": [
+        {
+            "amount": "1",
+            "type": "buy",
+            "price": "0.42",
+            "total": "0.42",
+            "from_cur": "BTC",
+            "to_cur": "INR"
+        }
+    ]
+}
+          			</pre>
+
+				  </div>
+
+				</div>
+<!--1-->
+
+
+
+         
+<!--1-->
+				<div class="panel panel-primary">
+
+				  <div class="panel-heading" data-acc-link="demo11"><span>Get Currencies</span></div>
+
+				  <div class="panel-body" data-acc-content="demo11">
+
+				    <p class="paippg2">This endpoint returns a list of existing exchange open buy order books. </p>
+
+<div class="clear"></div>
+
+                    <p class="paippg2 postcod_out">POST https://www.bit2atm.com/api/openBuyorders</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Parameters:</h3>
+
+<div class="clear"></div> 
+				    <p class="paippg2" style="margin-top:0px; padding-left:10px; ">pair (string) BTC_INR.</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Response:</h3>
+
+<div class="clear"></div>
+                    <pre class="prf_pg1">
+{
+    "status": "1",
+    "openOrders": [
+        {
+            "amount": "1",
+            "type": "buy",
+            "price": "0.42",
+            "total": "0.42",
+            "from_cur": "BTC",
+            "to_cur": "INR"
+        }
+    ]
+}
+          			</pre>
+
+				  </div>
+
+				</div>
+<!--1-->
+         
+<!--1-->
+				<div class="panel panel-primary">
+
+				  <div class="panel-heading" data-acc-link="demo12"><span>Order Book</span></div>
+
+				  <div class="panel-body" data-acc-content="demo12">
+
+				    <p class="paippg2">This endpoint returns a list of existing exchange open buy order books. </p>
+
+<div class="clear"></div>
+
+                    <p class="paippg2 postcod_out">POST https://www.bit2atm.com/api/openBuyorders</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Parameters:</h3>
+
+<div class="clear"></div> 
+				    <p class="paippg2" style="margin-top:0px; padding-left:10px; ">pair (string) BTC_INR.</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Response:</h3>
+
+<div class="clear"></div>
+                    <pre class="prf_pg1">
+{
+    "status": "1",
+    "openOrders": [
+        {
+            "amount": "1",
+            "type": "buy",
+            "price": "0.42",
+            "total": "0.42",
+            "from_cur": "BTC",
+            "to_cur": "INR"
+        }
+    ]
+}
+          			</pre>
+
+				  </div>
+
+				</div>
+<!--1-->
+         
+<!--1-->
+				<div class="panel panel-primary">
+
+				  <div class="panel-heading" data-acc-link="demo13"><span>Market History</span></div>
+
+				  <div class="panel-body" data-acc-content="demo13">
+
+				    <p class="paippg2">This endpoint returns a list of existing exchange open buy order books. </p>
+
+<div class="clear"></div>
+
+                    <p class="paippg2 postcod_out">POST https://www.bit2atm.com/api/openBuyorders</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Parameters:</h3>
+
+<div class="clear"></div> 
+				    <p class="paippg2" style="margin-top:0px; padding-left:10px; ">pair (string) BTC_INR.</p>
+
+<div class="clear"></div>
+					
+                    <h3 class="prh3">Response:</h3>
+
+<div class="clear"></div>
+                    <pre class="prf_pg1">
+{
+    "status": "1",
+    "openOrders": [
+        {
+            "amount": "1",
+            "type": "buy",
+            "price": "0.42",
+            "total": "0.42",
+            "from_cur": "BTC",
+            "to_cur": "INR"
+        }
+    ]
+}
+          			</pre>
+
+				  </div>
+
+				</div>
+<!--1-->
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+
+
+
+</div>
+
+
+
+
+<!--outer_palns start-->
+
+
+            
+
+		<script type="text/javascript">
+
+		$(function() {
+
+			$('.example1').accordion({ multiOpen: false });
+
+
+
+		});
+
+		</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+<!--portfolio-end--->
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--footer-start--->
+
+<div class="footer-bg">
+<div class="container container-1500">
+
+
+
+<div class="col-md-3">
+<div class="foot-address">
+<a href="index.html"><img src="images/logo-footer.png" /></a>
+</div>
+
+
+
+<ul class="ul_footer-1">
+<li><img src="images/Layer 724.png" /><a href="#">Submit Request</a></li>
+<li> <img src="images/Layer 7244.png" /><a href="#">Join Us</a></li>
+<li> <img src="images/Layer 713.png" /><a href="#">Fees</a></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="col-md-3">
+
+<div class="fot-heading">
+QUICK MENU<br />
+</div>
+
+<div class="fot-links allmenu">
+<ul>
+<li class="fot-bullet"><a href="#"><span>Trade</span></a></li>
+<li class="fot-bullet"><a href="exchange.html"><span>Exchange</span></a></li>
+<li class="fot-bullet"><a href="api.html"><span>API</span></a></li>
+</ul>
+
+</div>
+
+</div>
+
+
+
+
+<div class="col-md-3">
+
+<div class="fot-heading">
+CONTACT US<br />
+</div>
+
+<div class="fot-links allmenu">
+<ul>
+<li class="fot-bullet"><a href="#"><span>Email</span></a></li>
+<li class="fot-bullet"><a href="#"><span>Submit Feedback</span></a></li>
+</ul>
+
+</div>
+
+</div>
+
+
+
+<div class="col-md-3">
+<div class="fot-out21">
+
+<div class="fot-heading">
+SOCIAL MEDIA <br />
+</div>
+
+<div style="background:none;" class="topcont__part1">
+<a class="ft-so-icon" href="#"><img class="hvr-rotate" src="images/Layer 766.png"></a>
+<a class="ft-so-icon"href="#"><img class="hvr-rotate" src="images/Layer 767.png"></a>
+<a class="ft-so-icon"href="#"><img class="hvr-rotate" src="images/Layer 769.png"></a>
+<a class="ft-so-icon"href="#"><img class="hvr-rotate" src="images/Layer 769.png"></a><br />
+
+<a class="ft-so-icon"href="#"><img class="hvr-rotate" src="images/Layer 770.png"></a>
+<a class="ft-so-icon"href="#"><img class="hvr-rotate" src="images/Layer 771.png"></a>
+<a class="ft-so-icon"href="#"><img class="hvr-rotate" src="images/Layer 772.png"></a>
+</div>
+
+
+
+</div>
+</div>
+
+
+
+
+</div>
+</div>
+
+
+<div class="fot-pattern">
+<div class="container ">
+
+<div class="copyright-text-1">
+Copyright &copy; 2021 Bit2atm . All rights reserved.
+</div>
+
+</div>
+</div>
+<!--footer-end--->
+
+
+
+
+</body>
+</html>

@@ -26,8 +26,8 @@ Personal Information
 <form action="{{ url('user-profile') }}" method="post">
 @csrf
 @if(isset($user))
-							<input type="hidden" name="hid" value="{{ $user->id }}"> 
-						@endif
+<input type="hidden" name="hid" value="{{ $user->id }}"> 
+@endif
 					
 <div class="col-md-4">		
 <div class="contact_title">

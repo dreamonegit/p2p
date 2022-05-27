@@ -33,6 +33,8 @@ Route::get('/signin', function () {
     return view('user.signin');
 });
 
+Route::get('/aboutus', [App\Http\Controllers\UserController::class, 'aboutus']);
+
 Route::post('/signin', [App\Http\Controllers\UserController::class, 'signin']);
 
 Route::get('/privacypolicy', [App\Http\Controllers\UserController::class, 'privacypolicy']);
@@ -70,9 +72,12 @@ Route::group(['prefix' => 'user',  'middleware' => ['auth','user',ClearFormSessi
 	Route::any('/getcoinaddress', [App\Http\Controllers\UserController::class, 'getcoinaddress']);
 	
 	Route::post('/updatestatus', [App\Http\Controllers\UserController::class, 'updatestatus']);
-	
+
 	Route::get('/referrals', [App\Http\Controllers\UserController::class, 'referrals']);
 	
+	Route::get('/bank_details', [App\Http\Controllers\UserController::class, 'bankdetails']);
+	
+	Route::post('/bank_details', [App\Http\Controllers\UserController::class, 'bankdetails']);
 	
 	Route::get('/logout', function () {
 	   Auth::logout();

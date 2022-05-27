@@ -66,12 +66,14 @@
                <div class="menu-out">
                   <div id='cssmenu'>
                      <ul>
-                        <li class="first  "><a href='{{ url("/user/exchange") }}'>Dashboard</a></li>
-                        <li  class=" "><a href="#">Security</a></li>
-                        <li  class=" "><a href="#">Identification</a></li>
-                        <li  class=" "><a href="#">Payment</a></li>
-                        <li  class=" "><a href="#">Referral</a></li>
-                        <li  class="last active"><a href="#">Settings</a></li>
+                        <li class="first"><a href='{{ url("/user/exchange") }}'>Dashboard</a></li>
+                        <!--<li  class=" "><a href="#">Security</a></li>-->
+                        <li  class="second"><a href="#">Identification</a></li>
+                        <li  class="third"><a href="#">Payment</a></li>
+                        <li  class="fourth"><a href="#">Referral</a></li>
+						<li  class="sixth"><a href='{{ url("/user/bank_details") }}'>Bank Details</a></li>
+                        <!--<li  class="last active"><a href="#">Settings</a></li>-->
+						 <li class="seventh"><a href='{{ url("/user/aboutus") }}'>About Us</a></li>
                      </ul>
                   </div>
                </div>
