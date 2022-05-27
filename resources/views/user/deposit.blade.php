@@ -1,5 +1,11 @@
 @extends('userlayouts.layouts.header_auth')
 @section('content')
+<style>
+.error{
+	float: inherit;
+	color:red;
+}
+</style>
 <div class="clear"></div>
 <!--body-start--->
 <div class="homebanner2_outer">
@@ -22,7 +28,7 @@
 			 <div class="depositopen show">
 				<div class="row">
 					<div class="form-group col-md-6">
-					  <label class="required">Coin </label>
+					  <label>Coin </label>
 					  <select name="coin_id" class="enq-input city-space-2 coin"  data-action="deposit">
 						 <option value="" selected="" disabled="">Select Coin</option>
 						 @foreach($coin as $coinval)
@@ -31,13 +37,13 @@
 					  </select>
 					</div>
 					<div class="form-group col-md-6">
-					  <label class="required">Deposit Coin</label>
+					  <label>Deposit Coin</label>
 					 <input type="text" class="enq-input qty" name="qty" placeholder="Quantity" onchange="amountcalculation(this);">
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col-md-10">
-					  <label class="required">Deposit Address</label>
+					  <label>Deposit Address</label>
 					 <input type="text" class="enq-input" name="deposit_address" id="deposit_address" placeholder="Deposit Address">
 					</div>
 					<div class="form-group col-md-2">
@@ -109,7 +115,7 @@
 					$('#deposit_address').val(data.address);
 					$('#singlecoinprice').val(data.coinamount);
 					if($('.qty').val()!=''){
-						amountcalculation($('.qty').val());
+						//amountcalculation($('.qty').val());
 					}
 				}else{
 					$('#sellqty').val(data.total_volume);
@@ -129,5 +135,23 @@ function copyToClipboard(element) {
   $temp.remove();
   $('#contentcopy').text('Copied!..').css('background-color','green');
 }
+
+$(document).ready(function () {
+
+    $('#exchange').validate({ // initialize the plugin
+        rules: {
+            coin_id: {
+                required: true
+            },
+            qty: {
+                required: true
+            },
+            deposit_address: {
+                required: true
+            }
+        }
+    });
+
+});
 </script>
 @endsection

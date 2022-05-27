@@ -148,7 +148,7 @@
 											@if($deposithistoryval->transaction_id!='')
 												<dd class="col-sm-8"> <input type="text" class="enq-input" readonly name="transaction_id" placeholder="Transaction #ID" value="{{ $deposithistoryval->transaction_id}}"></dd>
 											@else
-												<dd class="col-sm-8"> <input type="text" class="enq-input" name="transaction_id" placeholder="Transaction #ID"></dd>
+												<dd class="col-sm-8"> <input type="text" class="enq-input" required name="transaction_id" placeholder="Transaction #ID"></dd>
 											@endif
 										</dl>
 										<dl class="row">

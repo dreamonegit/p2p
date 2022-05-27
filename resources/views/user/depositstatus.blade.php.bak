@@ -89,7 +89,7 @@
 							 </div>
 						  </td>
 						  <td>
-							 <div class="exc-border--3">{{ $deposithistoryval->qty }} {{ $coindetail['symbol']
+							 <div class="exc-border--3">{{ $deposithistoryval->qty }} {{ $coindetail['symbol'] }}
 								
 							 </div>
 						  </td>

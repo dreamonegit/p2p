@@ -20,7 +20,7 @@
          <div class="adminlogin_form">
             <form action="{{ url('userregistration') }}" method="post" name="l1" id="l1" autocomplete="off" enctype="multipart/form-data">
                @csrf
-			   <input type="hidden" name="refcode" value="@if(isset($_GET['refcode'])){{$_GET['refcode']}}@endif">
+			   <input type="hidden" name="refcode" value="@if(isset($_GET['refcode'])){{$_GET['refcode']}} @endif">
                <div class="admin_box">
                   <div class="input_login emaillog">
                      <input name="email" id="user" value="" placeholder="Email Id" class="user_box" tabindex="1" required autocomplete="off" type="email">

@@ -25,7 +25,9 @@ Route::get('/', function () {
 Route::get('/signup', function () {
     return view('user.signup');
 });
-
+Route::get('/signup/{id}', function () {
+    return view('user.signup');
+});
 
 Route::get('/signin', function () {
     return view('user.signin');
@@ -69,6 +71,8 @@ Route::group(['prefix' => 'user',  'middleware' => ['auth','user',ClearFormSessi
 	
 	Route::post('/updatestatus', [App\Http\Controllers\UserController::class, 'updatestatus']);
 	
+	Route::get('/referrals', [App\Http\Controllers\UserController::class, 'referrals']);
+	
 	
 	Route::get('/logout', function () {
 	   Auth::logout();
@@ -87,7 +91,7 @@ Route::group(['prefix' => 'admin',  'middleware' => ['auth','admin',ClearFormSes
 	Route::get('/list-deposit', [App\Http\Controllers\AdminController::class, 'listdeposit'])->middleware('admin');
 	Route::post('/save-deposit', [App\Http\Controllers\AdminController::class, 'savedeposit'])->middleware('admin');
 	Route::get('/view-deposit/{id}', [App\Http\Controllers\AdminController::class, 'viewdeposit'])->middleware('admin');
-	Route::get('/delete-deposit/{id}', [App\Http\Controllers\AdminController 'deletedeposit'])->middleware('admin');
+	Route::get('/delete-deposit/{id}', [App\Http\Controllers\AdminController::class, 'deletedeposit'])->middleware('admin');
 	Route::any('/myprofile', [App\Http\Controllers\AdminController::class, 'myprofile'])->middleware('admin');
 	Route::get('/listcoin', [App\Http\Controllers\CoinController::class, 'index'])->middleware('admin');
 	Route::get('/edit-coin/{id}', [App\Http\Controllers\CoinController::class, 'savecoin'])->middleware('admin');

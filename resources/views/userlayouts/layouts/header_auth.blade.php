@@ -18,6 +18,10 @@
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 		<link rel="stylesheet" href="/resources/demos/style.css">
 		<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+		<link rel="stylesheet" href="/user/css/dataTables.bootstrap.min.css">
+		<script src="{{ asset('user/js/jquery.validate.min.js')}}"></script>
+		<script src="{{ asset('user/js/jquery.dataTables.min.js')}}"></script>
+		<script src="{{ asset('user/js/dataTables.bootstrap.min.js')}}"></script>
       <script>
          $(document).ready(function() {
          

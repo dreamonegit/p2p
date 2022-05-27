@@ -45,6 +45,9 @@ class UserController extends Controller
 			$user->password = Hash::make($request->input('pass'));
 			$user->role = '2';
 			$user->plain = $request->input('pass');
+			if($request->input('pass')){
+				$user->refcode = $request->input('refcode');
+			}
 			$user->save();
 			auth()->login($user);
 			/*if(env('MAILENV') == 'live'){
@@ -73,8 +76,6 @@ class UserController extends Controller
 			$login = 0;
 			if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('pass'), 'status' => 1])) {
 				$login = 1;				
-			}elseif(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('pass'), 'status' => 1])) {
-				$login = 1;
 			}
 			if($login == 1){
 				$loginhistory = new LoginHistory;
@@ -87,7 +88,7 @@ class UserController extends Controller
 				//redirect to dashboard
 				return redirect('/user/exchange');	
 			}else{
-				return redirect()->back()->with('failure', 'Invalid Credentials'); 	
+				return redirect()->back()->with('failure', 'Invalid credentials or account is not verified pls try again or contact administration..'); 	
 			}				
 		}
 	}
@@ -202,6 +203,14 @@ class UserController extends Controller
 			return redirect('/user/deposit-history')->with('message','Sucessfully updated...'); 
 		}
 		
+	}
+	public function referrals(Request $request){
+		if ($request->isMethod('post')){
+
+		}else{
+			$this->data['refuser'] = User::select('email')->where('refcode',auth::user()->id)->where('role',2)->get();
+			return view('user.referrals',$this->data);
+		}
 	}
 	public function privacypolicy(){
 		

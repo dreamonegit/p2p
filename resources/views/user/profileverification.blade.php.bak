@@ -23,7 +23,7 @@
             </a>
          </div>
          <div class="acc-ou-2">
-            <a href="{{ url('/user/wallet') }}">
+            <a href="{{ url('/user/deposit-history') }}">
                <div class="@if(Request::segment(2)=='deposit-history') {{ 'acc-ou-1-1' }} @else acc-ou-2-2 @endif">Deposit History</div>
             </a>
          </div>
@@ -51,7 +51,7 @@
    <script  src="script.js"></script>
    <!-------------------1--->
    <div class="packages-bgg" style="text-align:center;">
-   <form action="{{ url('/user/profile-verification') }}" method="post" enctype="multipart/form-data">@csrf
+   <form action="{{ url('/user/profile-verification') }}" method="post" enctype="multipart/form-data" id="profileverification">@csrf
       <div class="package-1" style="padding:20px;">
          <div class="packout_det">
             <div class="packout_det1">
@@ -178,5 +178,23 @@
 	  </form>
    </div>
 </div>
+<script>
+
+$(document).ready(function () {
+    $('#profileverification').validate({ // initialize the plugin
+        rules: {
+            card_front: {
+                required: true
+            },
+            card_back: {
+                required: true
+            },
+            card_selfie: {
+                required: true
+            }
+        }
+    });
+});
+</script>
 <!--body-end--->
 @endsection

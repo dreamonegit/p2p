@@ -104,14 +104,18 @@
 					   </div>
 						</div>
 						<div class="row">
-						<div class="form-group col-md-4">
-						  <label for="exampleFormControlSelect1">Status</label>
-						  <select class="form-control form-control-lg" id="status" name="status">
-							<option value="">------Choose Option------</option>
-							<option value="1" @if(isset($user))@if($user->status==1) {{ "selected" }} @endif @endif>Active</option>
-							<option value="0" @if(isset($user))@if($user->status==0) {{ "selected" }} @endif @endif>In-Active</option>
-						  </select>
-						</div>
+ 							<div class="form-group col-md-4">
+							  <label class="required">Referel Code</label>
+							  <input type="text" class="form-control form-control-lg" value="@if(isset($user)){{ $user->refcode }} @endif" readonly>
+							</div>
+							<div class="form-group col-md-4">
+							  <label for="exampleFormControlSelect1">Status</label>
+							  <select class="form-control form-control-lg" id="status" name="status">
+								<option value="">------Choose Option------</option>
+								<option value="1" @if(isset($user))@if($user->status==1) {{ "selected" }} @endif @endif>Active</option>
+								<option value="0" @if(isset($user))@if($user->status==0) {{ "selected" }} @endif @endif>In-Active</option>
+							  </select>
+							</div>
 						</div>
                           <div class="form-group">
 						  <button type="submit" class="btn btn-primary button-right step-button" >Save</button>

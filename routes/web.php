@@ -25,7 +25,9 @@ Route::get('/', function () {
 Route::get('/signup', function () {
     return view('user.signup');
 });
-
+Route::get('/signup/{id}', function () {
+    return view('user.signup');
+});
 
 Route::get('/signin', function () {
     return view('user.signin');
@@ -68,6 +70,8 @@ Route::group(['prefix' => 'user',  'middleware' => ['auth','user',ClearFormSessi
 	Route::any('/getcoinaddress', [App\Http\Controllers\UserController::class, 'getcoinaddress']);
 	
 	Route::post('/updatestatus', [App\Http\Controllers\UserController::class, 'updatestatus']);
+	
+	Route::get('/referrals', [App\Http\Controllers\UserController::class, 'referrals']);
 	
 	
 	Route::get('/logout', function () {
